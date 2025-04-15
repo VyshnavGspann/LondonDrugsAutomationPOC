@@ -3,19 +3,8 @@
 
 module.exports = {
     baseUrl: 'https://https://london-drugs-uat-origin.kibology.us/',
-    BMUrl: "https://development-na01-worldmarket.demandware.net/on/demandware.store/Sites-Site/default/ViewApplication-DisplayWelcomePage",
-    apibaseURL: "https://api.watsoncommerce.ibm.com",
-    resApibaseURL: "https://api5-017.responsys.net",
-    partialEnrollmentURL: "https://wmfdplccssvqancus001-apd0bmgnfzh6feah.z01.azurefd.net/Enroll",
-    rapidEnrollmentURL : "https://wmfdc360qancus001-gxcuhzguh3gpb6cp.z01.azurefd.net",
-    mcbBaseURL: "https://rewardsq.worldmarket.com/mcb/",
-    userEmail: ["wme2ereg+devtestEmail01@worldmarket.com", "wme2ereg+devtestEmail02@worldmarket.com","wme2ereg+devtestEmail03@worldmarket.com","wme2ereg+devtestEmail04@worldmarket.com","wme2ereg+devtestEmail05@worldmarket.com","wme2ereg+devtestEmail06@worldmarket.com","wme2ereg+devtestEmail07@worldmarket.com","wme2ereg+devtestEmail08@worldmarket.com","wme2ereg+devtestEmail09@worldmarket.com"],
-    userEmailReward: ["wme2ereg+devtestEmail10@worldmarket.com",],
-    partialEnrollEmail: "sindhutest30+partialenroll4@gmail.com",
-    unRegisteredEmail: "yy2345zzaa@gmail.com",
-    userEmailWithFiveSavedCards: ["wme2ereg+devtestEmail03@worldmarket.com"],
-    userEmailWithNoSavedAddress: ["userjtpkdwc9278@worldmarket.com"],
-    userEmalWithNoOrders:  ["userjtpkdwc9278@worldmarket.com"],
+    
+    domain: "london-drugs-uat-origin.kibology.us",
     password: process.env.USER_PASSWORD,
 
     bmUserEmail: "vikram.sangisetti@worldmarket.com",
@@ -38,15 +27,10 @@ module.exports = {
             master: {
 
             },
-            Worldmarket: {
-                cardNumber: "4564200000001111",
-                cardName: "Test Visa",
-                exp: "03/30",
-                cvv: "737",
-            }
+
         },
         paypal: {
-            useremail: "cpwmworldmarket@gmail.com",
+            useremail: "",
             password: process.env.PAYPAL_PASSWORD,
 
         },
@@ -72,12 +56,6 @@ module.exports = {
 
     productData: {
         productskeywords: ["Vases", "Baking Tools", "Bowl", "Wall Hooks"],
-        variant: {
-            productCode: "92776",
-            productUrl: "https://development-instance.worldmarket.com/p/round-tufted-velvet-throw-pillow-92776.html",
-            productUrlTiles: "https://development-instance.worldmarket.com/search?q=Vases&search-button=&lang=en_US",
-            furnitureInspireTab: "https://development-instance.worldmarket.com/search?q=furnitures&search-button=&lang=en_US"
-        },
 
         MIXED_PRODUCT: ["444432", "540625", "448849", "527210",],
 

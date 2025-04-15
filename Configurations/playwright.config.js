@@ -73,10 +73,17 @@ module.exports = defineConfig({
     //baseURL : "https://development-instance.worldmarket.com/",
     headless : true,
     ignoreHTTPSErrors: true,
-    browserName : "webkit",
+    browserName : "chromium",
     ...getDeviceConfig(),
     permissions: ["clipboard-read"],
-    // args: ['--start-maximized'],
+    args: [
+      '--disable-gpu', // Disables GPU hardware acceleration. If software renderer is not in place, this can help avoid errors.
+      '--no-sandbox', // Disables the sandbox for all process types that are normally sandboxed.
+      '--disable-setuid-sandbox', // Disables the setuid sandbox (Linux only).
+      '--ignore-certificate-errors', // Ignores certificate errors, allowing testing on sites with invalid certs.
+      '--ignore-ssl-errors', // Similar to ignore certificate errors but for SSL protocol errors.
+      `--proxy-server=http://localhost:8080`, // Use a proxy server for network requests. Useful for capturing network traffic.
+  ],
   },
 
   /* Configure projects for major browsers */

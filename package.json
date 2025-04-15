@@ -4,6 +4,11 @@
   "description": "LondonDrugs Ecom and OMS automation with Playwright",
   "main": "index.js",
   "scripts": {
+    "launchProxy": "pkill mitmproxy || true && osascript -e 'tell application \"Terminal\" to do script \"cd /Users/vyshnav.chavala/Downloads/LondonDrugs/LondonDrugsAutomationPOC/ ; mitmproxy\"'",
+    "CICDproxy": "osascript -e 'tell application \"Terminal\" to do script \"cd QA-PlaywrightAutomation/; mitmproxy --set client_certs=cert/WMcertificate.pem\"'",
+    "setEnv1": "export HTTP_PROXY=http://localhost:8080",
+    "setEnv2": "export HTTPS_PROXY=http://localhost:8080",
+    "configurebrowser": "(npm run launchProxy) && (npm run setEnv1) && (npm run setEnv2)",
     "sfcc:single:test": "TEST_APP=sfcc TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/e2eLDOrdercreationShiptoHome.spec.js --workers=1 --config=Configurations/playwright.config.js --headed"
   },
   "keywords": [],

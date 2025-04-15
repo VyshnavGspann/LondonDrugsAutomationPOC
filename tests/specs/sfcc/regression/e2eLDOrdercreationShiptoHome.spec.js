@@ -1,35 +1,43 @@
 const { test, expect } = require('@playwright/test');
 // const { E2Eorder } = require('../../../../pageObjects/E2EOrder');
-// const {E2Eorder} = require('../../../pageObjects/E2Eorder');
 const {CartPage} = require('../../../pageObjects/CartPage');
 const {HomePage} = require('../../../pageObjects/HomePage');
 const {CheckoutPage} = require('../../../pageObjects/CheckoutPage');
-// const { CartPage } = require('../../../../pageObjects/CartPage');
-// const { HomePage } = require('../../../../pageObjects/HomePage');
-// const { CheckoutPage } = require('../../../../pageObjects/CheckoutPage');
 
-// Utility functions for common tasks
-// const commonlib = require('../../../../utils/commonUtil');
+const application = process.env.TEST_APP; // "OMS" or "SFCC"
+const environment = process.env.TEST_ENV; // "qa" or "staging" or "uat"
+// The commented line will be uncommented while pushing the code to Github
+const testData = require(`../../../testData/sfcc/${environment}TestData.js`);
 
-// Retrieve and log environment variables to dynamically configure the test environment and application under test.
-// This allows for flexible test execution across different settings.
-// const environment = process.env.TEST_ENV; // Expected values: "qa" or "staging"
-// console.log(`Current working directory: ${process.cwd()}`);
+test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
+    const context = await browser.newContext();
+    
+    // Parse your raw cookie string
+    const rawCookieString = `'datadome=JOhKWiI2EewsiCk7hda~p5sXLFsCny7620mwgNIzQklpgUUTPh4QIBL35UA~r673w_KdaaB1AFQhfAAbBsCbtLeLthlUaNld6DV8VqD_NAvDQqSD4Xnq81EoQZQOLsgT'`;
+    
+    const domain = 'london-drugs-uat-origin.kibology.us'; // 🔁 Replace with your actual domain (no https or path)
+  
+    const cookies = rawCookieString.split('; ').map(cookie => {
+      const [name, ...rest] = cookie.split('=');
+      return {
+        name,
+        value: rest.join('='),
+        domain,
+        path: '/',
+        httpOnly: false,
+        secure: true,
+        sameSite: 'Lax',
+        expires: -1, // Set to -1 for session cookies
+      };
+    });
 
-// // Note: This line is commented out for development purposes and should be uncommented in production.
-// const testDataFilePath = `../../../../testData/sfcc/${environment}TestData.js`;
+    console.log('Parsed cookies:', cookies);
+    await context.addCookies(cookies);
 
-// Use a placeholder for test data to prevent IDE errors during script development. This is a temporary solution until the above dynamic path is utilized.
-// const testData = require('../../../../testData/sfcc/qaTestData');
-
-// Intended for dynamic test data import based on the application and environment. Uncomment and use this line in production for more flexible test data management.
-// const testData = require(testDataFilePath);
-
-test('E2E Test Ordercreation for Ship to home.',  async ({ page }) => {
+    const page = await context.newPage();
     const homePage = new HomePage(page);
     await homePage.goTo();
-    // const captchaFrame = page.frameLocator('iframe'); // Adjust if CAPTCHA is inside an iframe
-
+    await page.waitForTimeout(10000);
 // Detect if the slider is visible
 if (await page.locator('text=Slide right to complete the puzzle.').isVisible({ timeout: 5000 }).catch(() => false)) {
     const sliderHandle = await page.locator('//div[contains(@class, "slider")]'); // Update this selector
