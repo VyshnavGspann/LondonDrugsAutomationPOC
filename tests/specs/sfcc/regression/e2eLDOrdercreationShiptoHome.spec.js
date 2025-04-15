@@ -13,7 +13,7 @@ test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
     const context = await browser.newContext();
     
     // Parse your raw cookie string
-    const rawCookieString = `'datadome=JOhKWiI2EewsiCk7hda~p5sXLFsCny7620mwgNIzQklpgUUTPh4QIBL35UA~r673w_KdaaB1AFQhfAAbBsCbtLeLthlUaNld6DV8VqD_NAvDQqSD4Xnq81EoQZQOLsgT'`;
+    const rawCookieString = 'datadome=~Xmh3KtuHFUcyjKkx9xi_e~AmAUq9u1Lgildx9misVXqDMbVUFjdexQxhJWATqU4_9EPMd_0LR5JVA8~xWlPbYToX4_DOZ~GkwxLmmdBMmjrIYV9QlK0QpOUkkJh3WtQ';
     
     const domain = 'london-drugs-uat-origin.kibology.us'; // 🔁 Replace with your actual domain (no https or path)
   
@@ -27,7 +27,6 @@ test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
         httpOnly: false,
         secure: true,
         sameSite: 'Lax',
-        expires: -1, // Set to -1 for session cookies
       };
     });
 
