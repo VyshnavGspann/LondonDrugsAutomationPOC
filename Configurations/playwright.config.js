@@ -4,6 +4,8 @@ const { on } = require('events');
 import { testPlanFilter } from "allure-playwright/dist/testplan";
 import * as os from "os";
 
+const currenWorkingDirectory = process.cwd();
+
 // Determine the device configuration based on the environment variable
 const getDeviceConfig = () => {
   const deviceName = process.env.DEVICE || 'Desktop Chrome';
@@ -27,7 +29,7 @@ const getDeviceConfig = () => {
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
-  testDir: './tests',
+  testDir: currenWorkingDirectory + '/tests',
   timeout : 1*7*60*1000,
   // timeout : 60000,
   /* Run tests in files in parallel */
@@ -45,7 +47,7 @@ module.exports = defineConfig({
     ["allure-playwright",
       {
         detail: true,
-        outputFolder: "allure-results",
+        outputFolder: currenWorkingDirectory+"/allure-results",
         environmentInfo: {
           os_platform: os.platform(),
           os_release: os.release(),
@@ -54,7 +56,7 @@ module.exports = defineConfig({
         },
       },
     ],
-    ['junit', { embedAnnotationsAsProperties: true, outputFile: 'test-results/e2e-junit-results.xml' }],
+    ['junit', { embedAnnotationsAsProperties: true, outputFile: currenWorkingDirectory+'/test-results/e2e-junit-results.xml' }],
   ],
   
   grep: testPlanFilter(),
@@ -72,9 +74,9 @@ module.exports = defineConfig({
     headless : true,
     ignoreHTTPSErrors: true,
     browserName : "chromium",
-    // ...devices['Desktop Chrome'],
     ...getDeviceConfig(),
-    permissions: ["clipboard-read"]
+    permissions: ["clipboard-read"],
+    args: ['--start-maximized'],
   },
 
   /* Configure projects for major browsers */
