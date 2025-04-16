@@ -21,7 +21,7 @@ class HomePage {
         // await this.page.waitForTimeout(300000);
         await this.searchBox.fill(productName);
         await this.searchIcon.click();
-        await this.page.waitForSelector(this.searchFirstProduct); // Wait for the first product to appear
+        // await this.page.waitForSelector(this.searchFirstProduct); // Wait for the first product to appear
     }
 
     async navigateToLoginPage() {

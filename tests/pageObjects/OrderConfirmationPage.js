@@ -1,9 +1,9 @@
 const { expect } = require("playwright/test");
 
-class CartPage {
+class OrderConfirmationPage {
     constructor(page) {
         this.page = page;
-        this.searchFirstProduct = page.locator("(//a[@class='product-card-image flex flex-col items-center justify-center'])[1]");
+        this.thanksMessage = page.locator("//h1[text()='Thank you for your order']");
         this.addtoCartButton = page.locator("//span[text()='ADD TO CART']");
         this.viewCartCheckout = page.locator("//button[text()='View Cart & Checkout']");
         this.checkoutButton = page.locator("//button[text()='Checkout']");
@@ -25,4 +25,4 @@ class CartPage {
     
 }
 
-module.exports = { CartPage };
+module.exports = { OrderConfirmationPage };

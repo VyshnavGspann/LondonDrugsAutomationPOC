@@ -14,8 +14,8 @@ module.exports = {
     payment: {
         CreditCard: {
             visa: {
-                cardNumber: "4012000033330026",
-                cardName: "Test Visa",
+                cardNumber: "4111111111111111",
+                cardName: "Visa Accepted",
                 exp: "03/30",
                 cvv: "737",
             },
@@ -47,9 +47,9 @@ module.exports = {
 
     shipping: {
         firstName: "test",
-        lastName: "user",
-        address: "700 14th",
-        city: "Denver",
+        lastName: "Accept",
+        address: "501 Av Dressage",
+        city: "Stittsville",
         stateCode: "CO",
         postalCode: "80202-3213",
         phoneNumber: "9876543211"
