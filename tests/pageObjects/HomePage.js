@@ -23,6 +23,15 @@ class HomePage {
         await this.searchIcon.click();
         await this.page.waitForSelector(this.searchFirstProduct); // Wait for the first product to appear
     }
+
+    async navigateToLoginPage() {
+        await this.page.locator('header aside.items-center svg[role="button"]').first().click({ timeout: 10000 });
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForTimeout(1000);
+        await this.signInButton.click();
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForTimeout(3000);
+    }
     
 
 }

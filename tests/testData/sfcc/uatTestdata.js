@@ -3,12 +3,13 @@
 
 module.exports = {
     baseUrl: 'https://https://london-drugs-uat-origin.kibology.us/',
-    
+
+    dataDomekey: 'datadome=rbAbmAz8L5HtngstONMhCZPGOjMK6N4rofpjjZEM_skXzKFU3DFitV3ZNg3jb1EQrPT5NS4q~W4jNIvQF0beH2f4STJRvr8QyWYyS1MOrXRhDT_EqPUC9MqKwtywmzj8',  
     domain: "london-drugs-uat-origin.kibology.us",
     password: process.env.USER_PASSWORD,
 
-    bmUserEmail: "vikram.sangisetti@worldmarket.com",
-    bmPassword: process.env.BM_PASSWORD,
+    userEmail: "testimmediate111@yopmail.com",
+    password: process.env.PASSWORD,
 
     payment: {
         CreditCard: {

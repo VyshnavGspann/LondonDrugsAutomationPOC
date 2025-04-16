@@ -3,6 +3,7 @@ const { test, expect } = require('@playwright/test');
 const {CartPage} = require('../../../pageObjects/CartPage');
 const {HomePage} = require('../../../pageObjects/HomePage');
 const {CheckoutPage} = require('../../../pageObjects/CheckoutPage');
+const {SignInPage} = require('../../../pageObjects/SigninPage');
 
 const application = process.env.TEST_APP; // "OMS" or "SFCC"
 const environment = process.env.TEST_ENV; // "qa" or "staging" or "uat"
@@ -12,11 +13,8 @@ const testData = require(`../../../testData/sfcc/${environment}TestData.js`);
 test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
     const context = await browser.newContext();
     
-    // Parse your raw cookie string
-    const rawCookieString = 'datadome=~Xmh3KtuHFUcyjKkx9xi_e~AmAUq9u1Lgildx9misVXqDMbVUFjdexQxhJWATqU4_9EPMd_0LR5JVA8~xWlPbYToX4_DOZ~GkwxLmmdBMmjrIYV9QlK0QpOUkkJh3WtQ';
-    
-    const domain = 'london-drugs-uat-origin.kibology.us'; // 🔁 Replace with your actual domain (no https or path)
-  
+    const rawCookieString = testData.dataDomekey
+    const domain = testData.domain;
     const cookies = rawCookieString.split('; ').map(cookie => {
       const [name, ...rest] = cookie.split('=');
       return {
@@ -35,8 +33,10 @@ test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
 
     const page = await context.newPage();
     const homePage = new HomePage(page);
+    const signInPage = new SignInPage(page);
     await homePage.goTo();
-    await page.waitForTimeout(10000);
+    await homePage.navigateToLoginPage();
+    await signInPage.performLogin(testData.userEmail, testData.password);
 // Detect if the slider is visible
 if (await page.locator('text=Slide right to complete the puzzle.').isVisible({ timeout: 5000 }).catch(() => false)) {
     const sliderHandle = await page.locator('//div[contains(@class, "slider")]'); // Update this selector

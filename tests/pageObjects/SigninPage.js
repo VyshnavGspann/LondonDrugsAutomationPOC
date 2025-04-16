@@ -1,9 +1,11 @@
 // pageObjects/SigninPage.js
-// const { expect, chromium } = require('@playwright/test');
+const { expect } = require('@playwright/test');
 // const { error } = require('console');
 class SignInPage {
 
     constructor(page) {
+
+        this.log = (msg) => {console.log('SinginPage - '+msg);};
         this.page = page;
 
         // Locator for Sign In button in overlay or modal
@@ -13,16 +15,16 @@ class SignInPage {
         this.profileIcon = page.locator("(//*[@class='size-5 cursor-pointer text-base text-txtheader-primary focus:outline-none'])[1]");
         
         // Locator for the Email input field
-        this.emailInput = page.locator('input[placeholder="abc@gmail.com"]');
+        this.emailInput = page.locator('input[name="email"]');
         
         // Locator for the Password input field
-        this.passwordInput = page.locator('input[placeholder="******"]');
+        this.passwordInput = page.locator('input[name="password"]');
         
         // Locator for the CAPTCHA checkbox (recaptcha)
-        this.captchaCheckbox = page.locator('.recaptcha-checkbox-border');
+        this.captchaCheckbox = page.frameLocator('iframe[title="reCAPTCHA"]').locator('#recaptcha-anchor');
         
         // Locator for the Login button (Submit button)
-        this.loginButton = page.locator('button[type="submit"]');
+        this.loginButton = page.locator('button[data-label="login"]');
         
         // Locator for the "Forgot Password" link
         this.forgotPasswordLink = page.locator('a[href="/auth/forgotPassword"]');
@@ -35,6 +37,24 @@ class SignInPage {
         
         // Locator for the Send button (Submit button) in the Forgot Password form
         this.sendButton = page.locator('button[data-category="submit button"][data-action="click"][data-label="send"]');
+    }
+
+    async performLogin(email, password) {
+        await this.emailInput.fill(email,  {timeout: 10000});
+        this.log('Email is filled');
+        await this.passwordInput.fill(password,  {timeout: 10000});
+        this.log('Password is filled');
+        await this.captchaCheckbox.click({timeout: 10000});
+        this.log('Captcha is clicked');
+        await this.page.waitForTimeout(5000);
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.loginButton.click({timeout: 10000});
+        this.log('Login button is clicked');
+        expect(this.page.getByText('Login Successful!'), 'Success Alert is not visible').toBeVisible({timeout: 10000});
+        this.log('Login Successful Alert is visible');
+        await this.page.waitForTimeout(5000);
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForLoadState('load');
     }
 
     async clickSignInButton() {
