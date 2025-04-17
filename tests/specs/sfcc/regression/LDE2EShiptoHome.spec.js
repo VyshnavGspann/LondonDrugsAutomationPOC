@@ -47,4 +47,5 @@ test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
     await checkoutPage.placeyourOrder();
     const orderConfirmationPage = new OrderConfirmationPage(page);
     await orderConfirmationPage.verifythanksMessageAppears();   
+    await orderConfirmationPage.getOrderNumber();
 });

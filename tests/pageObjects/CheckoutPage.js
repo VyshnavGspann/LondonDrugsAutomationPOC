@@ -69,16 +69,16 @@ class CheckoutPage {
             await this.reviewYourOrder.click();
         }
 
-        async addShippingAddress(paymentData = {}) {
+        async addShippingAddress(shippingData = {}) {
             await this.page.waitForTimeout(3000);    
-            await this.userEmail.fill(paymentData.email);
-            await this.userFirstName.fill(paymentData.firstName);
-            await this.userLaststName.fill(paymentData.lastName);
-            await this.userAddress1.fill(paymentData.address1);
-            await this.userAddress2.fill(paymentData.address2);
-            await this.userCity.fill(paymentData.city);
-            await this.userZipcode.fill(paymentData.zipcode);
-            await this.userPhoneNumber.fill(paymentData.phone);
+            await this.userEmail.fill(shippingData.email);
+            await this.userFirstName.fill(shippingData.firstName);
+            await this.userLaststName.fill(shippingData.lastName);
+            await this.userAddress1.fill(shippingData.address1);
+            await this.userAddress2.fill(shippingData.address2);
+            await this.userCity.fill(shippingData.city);
+            await this.userZipcode.fill(shippingData.zipcode);
+            await this.userPhoneNumber.fill(shippingData.phone);
             await this.useThisAddressButton.click();
             await this.popUpuseThisAddressButton.click();
 

@@ -17,9 +17,7 @@ class HomePage {
         await this.page.goto('https://london-drugs-uat-origin.kibology.us/');  // Correct URL
     }
     async searchForProduct(productName) {
-        // await this.page.waitForSelector("//input[@placeholder='Find your product']", { state: 'visible', timeout: 60000 });
-        // await this.page.waitForTimeout(300000);
-        // await this.page.waitForTimeout(10000);
+        // await this.page.waitForTimeout(20000);
         await this.searchBox.fill(productName);
         await this.searchIcon.click();
         // await this.page.waitForSelector(this.searchFirstProduct); // Wait for the first product to appear

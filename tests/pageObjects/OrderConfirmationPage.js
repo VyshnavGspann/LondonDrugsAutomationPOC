@@ -3,18 +3,26 @@ const { expect } = require("playwright/test");
 class OrderConfirmationPage {
     constructor(page) {
         this.page = page;
-        this.thanksMessage = page.locator("//h1[normalize-space()='Thank you for your order']").allTextContents();
+        this.thanksMessage = page.locator("//h1[normalize-space()='Thank you for your order']")
+        // this.message = this.thanksMessage.textContent();
     }
 
     async verifythanksMessageAppears() {
-        await expect(this.thanksMessage).toContainText('Thank you for your order');
+        await this.page.waitForTimeout(20000);
+        expect(this.page.getByText('Thank you for your order'), 'Thank you for your order is not visible').toBeVisible({timeout: 10000});
     }
 
     // Proceed to checkout
     async proceedToCheckout() {
         await this.viewCartCheckout.click();
-        // await this.page.waitForSelector(this.checkoutButton); // Wait for the checkout button
         await this.checkoutButton.click();
+    }
+
+    async getOrderNumber() {
+        let orderNumber = await this.page.locator('//span[@class="text-primary" and starts-with(text(), "#")]').innerText({timeout: 10000});
+        orderNumber = orderNumber.trim().replace('#', '');
+        console.log('OrderNumber: '+orderNumber);
+        return orderNumber
     }
     
 }
