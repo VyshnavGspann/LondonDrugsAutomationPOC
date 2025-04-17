@@ -4,7 +4,7 @@
 module.exports = {
     baseUrl: 'https://https://london-drugs-uat-origin.kibology.us/',
 
-    dataDomekey: 'datadome=rbAbmAz8L5HtngstONMhCZPGOjMK6N4rofpjjZEM_skXzKFU3DFitV3ZNg3jb1EQrPT5NS4q~W4jNIvQF0beH2f4STJRvr8QyWYyS1MOrXRhDT_EqPUC9MqKwtywmzj8',  
+    dataDomekey: 'datadome=PScctP~nIELZCx_xBfJ35ITjp7ULs3fkgo2cxXFpdfF7U7NU8a3IXzfLlX2uvVxUfAwWIUIBXOVp7botqcMMXf86SFfEeZCOplokQq~1qO9AAS0yZ3dtiautyErM_UV0',  
     domain: "london-drugs-uat-origin.kibology.us",
     password: process.env.USER_PASSWORD,
 
@@ -14,10 +14,9 @@ module.exports = {
     payment: {
         CreditCard: {
             visa: {
-                cardNumber: "4111111111111111",
-                cardName: "Visa Accepted",
-                exp: "03/30",
-                cvv: "737",
+                nameOnCard: 'Test Accept',
+                cardNumber: '4111111111111111',
+                cvv: '123',
             },
             amex: {
 
@@ -46,13 +45,14 @@ module.exports = {
     },
 
     shipping: {
-        firstName: "test",
-        lastName: "Accept",
-        address: "501 Av Dressage",
-        city: "Stittsville",
-        stateCode: "CO",
-        postalCode: "80202-3213",
-        phoneNumber: "9876543211"
+        email: 'test@example.com',
+        firstName: 'John',
+        lastName: 'Accept',
+        address1: '501 Av Dressage',
+        address2: 'Apt 101',
+        city: 'Stittsville',
+        zipcode: 'K2V 0C8',
+        phone: '555-555-5555',
     },
 
     productData: {

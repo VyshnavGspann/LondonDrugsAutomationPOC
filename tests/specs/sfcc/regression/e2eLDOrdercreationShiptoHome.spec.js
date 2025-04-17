@@ -37,24 +37,7 @@ test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
     await homePage.goTo();
     await homePage.navigateToLoginPage();
     await signInPage.performLogin(testData.userEmail, testData.password);
-// Detect if the slider is visible
-if (await page.locator('text=Slide right to complete the puzzle.').isVisible({ timeout: 5000 }).catch(() => false)) {
-    const sliderHandle = await page.locator('//div[contains(@class, "slider")]'); // Update this selector
-    const box = await sliderHandle.boundingBox();
-
-    if (box) {
-        // Move the mouse and simulate the slider drag
-        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-        await page.mouse.down();
-        await page.mouse.move(box.x + box.width / 2 + 150, box.y + box.height / 2, { steps: 30 }); // Adjust x distance
-        await page.mouse.up();
-
-        // Optionally wait for validation
-        await page.waitForTimeout(2000);
-    }
-}
-    // await page.waitForTimeout(60000);
-    await homePage.searchForProduct('L3166635');
+    await homePage.searchForProduct('L3166675');
     const productPage = new CartPage(page);
     await productPage.addProductToCart();
     await productPage.proceedToCheckout();
@@ -62,19 +45,23 @@ if (await page.locator('text=Slide right to complete the puzzle.').isVisible({ t
     await checkoutPage.fillUserInformation({
         email: 'test@example.com',
         firstName: 'John',
-        lastName: 'Doe',
-        address1: '123 Test St',
+        lastName: 'Accept',
+        address1: '501 Av Dressage',
         address2: 'Apt 101',
-        city: 'Test City',
-        zipcode: '12345',
+        city: 'Stittsville',
+        zipcode: 'K2V 0C8',
         phone: '555-555-5555',
     });
     await checkoutPage.submitOrder();
+    // await checkoutPage.cardPayment(testData.payment.CreditCard.visa);
     await checkoutPage.fillPaymentDetails({
-        nameOnCard: 'John Doe',
+        nameOnCard: 'Test Accept',
         cardNumber: '4111111111111111',
         cvv: '123',
     });
+     await checkoutPage.placeyourOrder();
+     const orderConfirmationPage = new OrderConfirmationPage(page);
+     await orderConfirmationPage.verifythanksMessageAppears();   
     
     // You can add assertions here if necessary
     // For example, ensure the order confirmation page is shown

@@ -36,7 +36,7 @@ class CheckoutPage {
         await this.popUpuseThisAddressButton.click();
 
     }
-    async submitOrder() {
+    async proceedToBilling() {
         await this.proceedToBillingButton.click();
         // await this.page.waitForSelector(this.placeYourOrder); // Wait for Place your Order button
     }
@@ -55,6 +55,35 @@ class CheckoutPage {
         // expect(this.page.getByText('Thank you for your order'), 'thanks message is not visible').toBeVisible({timeout: 10000});
         // await this.page.waitForSelector(this.placeYourOrder); // Wait for Place your Order button
     }
+
+    async enterCreditCardDetails(paymentData = {}) {
+        await this.enterYourNameCard.fill(paymentData.nameOnCard);
+        await this.enterCardNumber.fill(paymentData.cardNumber);
+        await this.enterCVV.fill(paymentData.cvv);
+        // await this.page.waitForTimeout(3000);
+        console.log('------credit card details entered --------')
+    }
+
+    async cardPayment(paymentData = {}) {
+            await this.enterCreditCardDetails(paymentData);
+            await this.reviewYourOrder.click();
+        }
+
+        async addShippingAddress(paymentData = {}) {
+            await this.page.waitForTimeout(3000);    
+            await this.userEmail.fill(paymentData.email);
+            await this.userFirstName.fill(paymentData.firstName);
+            await this.userLaststName.fill(paymentData.lastName);
+            await this.userAddress1.fill(paymentData.address1);
+            await this.userAddress2.fill(paymentData.address2);
+            await this.userCity.fill(paymentData.city);
+            await this.userZipcode.fill(paymentData.zipcode);
+            await this.userPhoneNumber.fill(paymentData.phone);
+            await this.useThisAddressButton.click();
+            await this.popUpuseThisAddressButton.click();
+
+        }
+        
 }
 
     module.exports = { CheckoutPage };
