@@ -11,15 +11,15 @@ class CartPage {
 
     async addProductToCart() {
         await this.searchFirstProduct.click();
-        await this.page.waitForSelector(this.addtoCartButton); // Wait for Add to Cart button to appear
+        // await this.page.waitForSelector(this.addtoCartButton); // Wait for Add to Cart button to appear
         await this.addtoCartButton.click();
-        await this.page.waitForSelector(this.viewCartCheckout); // Ensure the cart page is visible
+       // await this.page.waitForSelector(this.viewCartCheckout); // Ensure the cart page is visible
     }
 
     // Proceed to checkout
     async proceedToCheckout() {
         await this.viewCartCheckout.click();
-        await this.page.waitForSelector(this.checkoutButton); // Wait for the checkout button
+        // await this.page.waitForSelector(this.checkoutButton); // Wait for the checkout button
         await this.checkoutButton.click();
     }
     
