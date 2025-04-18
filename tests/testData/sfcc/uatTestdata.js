@@ -14,6 +14,8 @@ module.exports = {
     tenantId: 39863,
     siteId: 61984,
     env: "sandbox",
+    clientId: "LoDru.ld_qe_automation.1.0.0.Release",
+    clientSecret: "408f7a052f4546ddaafb03815b2e264c",
 
     payment: {
         CreditCard: {

@@ -52,51 +52,7 @@ async function sleep(ms) {
     }
 }
 
-//Function to create bundle order
-async function createBundleOrder(page, testData) {
-    let orderDetails = {};
 
-    const loginPage = new LoginPage(page);
-    await loginPage.goToLoginPage();
-    await loginPage.login(testData.username2, testData.password);
-    const loginSuccess = await loginPage.verifySuccessfulLogin('test');
-    if (!loginSuccess) throw new Error('Login failed');
-
-    const productPage = new ProductPage(page);
-    await productPage.navigateToBundleProduct();
-    await (await productPage.selectShipToHomeRadioButton()).clickOnAddToCart();
-    let productPrice = await productPage.getProductPrice();
-    const priceMatch = productPrice.match(/\$\d+\.\d+/);
-    if (priceMatch) {
-        const priceValue = parseFloat(priceMatch[0].substring(1)); // Extract the number after the '$' and convert it to a float
-        productPrice = priceValue.toString(); // Convert the price value to a string
-        console.log(`Product Price: ${productPrice}`);
-    } else {
-        console.log("Price not found");
-    }
-    await productPage.validateMiniCartIsDisplayed();
-
-    const cartPage = new CartPage(page);
-    await cartPage.proceedToCheckout();
-
-    const checkoutPage = new CheckoutPage(page);
-    await checkoutPage.addNewShippingAddress(testData.shipping);
-    await checkoutPage.addNewCreditCard(testData.payment);
-    await checkoutPage.clickOnReviewOrder();
-
-    orderDetails.userEmailAddress = testData.username2;
-    orderDetails.OrderSubTotal = await checkoutPage.getOrderSubTotalOnReviewOrderPage();
-    orderDetails.OrderTax = await checkoutPage.getOrderTotalTaxOnReviewOrderPage();
-    orderDetails.OrderTotal = await checkoutPage.getOrderTotalOnReviewOrderPage();
-    orderDetails.productPrice = await productPrice;
-    await checkoutPage.clickOnCompleteOrder();
-
-    const orderConfirmationPage = new OrderConfirmationPage(page);
-    orderDetails.OrderDate = await orderConfirmationPage.getOrderDate();
-    orderDetails.orderNumber = await orderConfirmationPage.getOrderNumber();
-
-    return orderDetails;
-}
 
 async function createSTH_Order(page, testData) {
     let orderDetails = {};
