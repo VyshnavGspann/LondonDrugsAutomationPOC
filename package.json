@@ -9,7 +9,8 @@
     "setEnv1": "export HTTP_PROXY=http://localhost:8080",
     "setEnv2": "export HTTPS_PROXY=http://localhost:8080",
     "configurebrowser": "(npm run launchProxy) && (npm run setEnv1) && (npm run setEnv2)",
-    "sfcc:single:test": "PASSWORD=Apva@2025 TEST_APP=sfcc TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/e2eLDOrdercreationShiptoHome.spec.js --workers=1 --config=Configurations/playwright.config.js --headed"
+    "sfcc:e2e:test": "PASSWORD=Apva@2025 TEST_APP=sfcc TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/e2eLDOrdercreationShiptoHome.spec.js --workers=1 --config=Configurations/playwright.config.js --headed",
+    "sfcc:guest:test": "PASSWORD=Apva@2025 TEST_APP=sfcc TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/LDE2EShiptoHome.spec.js --workers=1 --config=Configurations/playwright.config.js --headed"
   },
   "keywords": [],
   "author": "LondonDrugs Automation",

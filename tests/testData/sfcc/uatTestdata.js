@@ -4,11 +4,16 @@
 module.exports = {
     baseUrl: 'https://https://london-drugs-uat-origin.kibology.us/',
   
-    dataDomekey: 'datadome=fAnT95_BIp_7o276GjYeTI4WLLfPczxdQWRo8ns7xmAMIzODMy6GWguZEF87dJyEte~wB2mMN1htW~K6_aRU68n3f4lxsql2fxRi4iHgAK4nFkYFMVVY3~CssonIexY4',
+    dataDomekey: 'datadome=U8E~nBIaXueJ21LM12ErvDuAfZWu3gD7O~KWSG316KICzJ2t_ASC0GuDsA8GX3zy6KYP8W~igPF2kBRlEAhyrKYi8iDQmCSgtg6hStO6ovcxA5SiVEllo_1fDtU2alz9',
     domain: "london-drugs-uat-origin.kibology.us",
 
     userEmail: "testimmediate111@yopmail.com",
     password: process.env.PASSWORD,
+
+    // API
+    tenantId: 39863,
+    siteId: 61984,
+    env: "sandbox",
 
     payment: {
         CreditCard: {
