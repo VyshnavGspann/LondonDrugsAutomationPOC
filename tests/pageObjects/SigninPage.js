@@ -26,6 +26,7 @@ class SignInPage {
         // Locator for the Login button (Submit button)
         this.loginButton = page.locator('button[data-label="login"]');
         
+        this.createAccountButton = page.locator('button[data-label="create account"]');
         // Locator for the "Forgot Password" link
         this.forgotPasswordLink = page.locator('a[href="/auth/forgotPassword"]');
         
@@ -37,6 +38,22 @@ class SignInPage {
         
         // Locator for the Send button (Submit button) in the Forgot Password form
         this.sendButton = page.locator('button[data-category="submit button"][data-action="click"][data-label="send"]');
+
+        this.LDAccountFname = page.locator('//input[@placeholder="First Name"]');
+
+        this.LDAccountLname = page.locator('//input[@placeholder="Last Name"]');
+
+        this.LDAccountEmail = page.locator('//input[@name="email"]');
+
+        this.LDAccountConfEmail = page.locator('//input[@name="confirmEmail"]');
+
+        this.LDAccountPhone = page.locator('//input[@name="phone"]');
+
+        this.LDAccountConfPhone = page.locator('//input[@name="confirmPhone"]');
+
+        this.LDAccountCreatePassword = page.locator('//input[@name="password"]');
+
+        this.LDAccountConfCreatePassword = page.locator('//input[@name="confirmPassword"]');
     }
 
     async performLogin(email, password) {
@@ -62,6 +79,49 @@ class SignInPage {
         await this.page.waitForTimeout(5000);
         await this.page.waitForLoadState('domcontentloaded');
         await this.page.waitForLoadState('load');
+    }
+
+    async performLDCreateAccount() {
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+        const randomNumber = Math.floor(Math.random() * 10000);
+        // Generate a random number between 0 and 9999
+        const randomString = Array.from({ length: 7 }, () => alphabet[Math.floor(Math.random() * alphabet.length)]).join('');
+        // Generate a random string of length 7
+        const firstName = `first${randomString}`;
+        const lastName = `last${randomString}`;
+        const password = `user${randomString}${randomNumber}`;
+        console.log(`Random password is ${password}`)
+        const email = `user${randomString}${randomNumber}@yopmail.com`;
+        console.log(`Random email is ${email}`)
+        const phoneNumber = '1' + Array.from({length: 9}, () => Math.floor(Math.random() * 10)).join('');
+        // const memberid = phoneNumber;
+        //await this.page.waitForSelector('input#registration-form-fname')
+        // await this.firstNameField.waitForElementState('visible');
+        await this.LDAccountFname.fill(firstName)
+        await this.LDAccountLname.fill(lastName)
+        await this.LDAccountEmail.fill(email)
+        await this.LDAccountConfEmail.fill(email)
+        await this.LDAccountPhone.fill(phoneNumber)
+        await this.LDAccountConfPhone.fill(phoneNumber)
+        await this.LDAccountCreatePassword.fill(password)
+        await this.LDAccountConfCreatePassword.fill(password)
+        await this.captchaCheckbox.click({timeout: 10000});
+        await this.page.evaluate(() => {  document.querySelector('iframe[title="reCAPTCHA"]').remove(); });
+        await this.page.waitForTimeout(1000);
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.evaluate(() => {  document.querySelector('textarea.g-recaptcha-response').remove(); });
+        await this.page.waitForTimeout(1000);
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.evaluate(() => {  document.querySelector('button[data-label="create account"]').removeAttribute('disabled'); });
+        await this.page.waitForTimeout(1000);
+        await this.page.waitForLoadState('domcontentloaded');
+        this.log('Captcha is bypassed.....');
+        await this.createAccountButton.click({force: true, timeout: 10000});
+        this.log('create button is clicked');
+        await this.page.waitForTimeout(5000);
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForLoadState('load');
+
     }
 
     async clickSignInButton() {

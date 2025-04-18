@@ -36,9 +36,9 @@ test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
     const homePage = new HomePage(page);
     const signInPage = new SignInPage(page);
     await homePage.goTo();
-    await homePage.navigateToLoginPage();
-    await signInPage.performLogin(testData.userEmail, testData.password);
-    await homePage.searchForProduct('L3166675');
+    await homePage.navigateCreatePage();
+    await signInPage.performLDCreateAccount();
+    await homePage.searchForProduct1('L3166675');
     const productPage = new CartPage(page);
     await productPage.addProductToCart();
     await productPage.proceedToCheckout();

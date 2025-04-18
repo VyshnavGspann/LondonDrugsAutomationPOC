@@ -83,6 +83,13 @@ class CheckoutPage {
             await this.popUpuseThisAddressButton.click();
 
         }
+
+        async addShippingAddressloggedUser(shippingData = {}) {
+            await this.page.waitForTimeout(3000);    
+            await this.useThisAddressButton.click();
+            await this.popUpuseThisAddressButton.click();
+
+        }
         
 }
 

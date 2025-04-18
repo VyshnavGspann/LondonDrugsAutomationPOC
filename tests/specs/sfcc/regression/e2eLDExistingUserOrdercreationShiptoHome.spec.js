@@ -38,12 +38,13 @@ test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
     await homePage.goTo();
     await homePage.navigateToLoginPage();
     await signInPage.performLogin(testData.userEmail, testData.password);
-    await homePage.searchForProduct('L3166675');
+    await homePage.searchForProduct1('L3166675');
     const productPage = new CartPage(page);
     await productPage.addProductToCart();
     await productPage.proceedToCheckout();
     const checkoutPage = new CheckoutPage(page);
-    // await checkoutPage.addShippingAddress(testData.shipping)
+    //await checkoutPage.addShippingAddress(testData.shipping)
+    await checkoutPage.addShippingAddressloggedUser();
     await checkoutPage.proceedToBilling();
     await checkoutPage.cardPayment(testData.payment.CreditCard.visa);
     await checkoutPage.placeyourOrder();

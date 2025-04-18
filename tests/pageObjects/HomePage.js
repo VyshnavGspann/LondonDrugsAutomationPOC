@@ -6,6 +6,7 @@ class HomePage {
     constructor(page) {
         this.page = page;
         this.signInButton = page.locator('a[data-label="overlay:sign in"]');
+        this.createAccount = page.locator('a[data-label="overlay:create an account"]')
         // Locator for the Profile Icon
         this.profileIcon = page.locator("(//*[@class='size-5 cursor-pointer text-base text-txtheader-primary focus:outline-none'])[1]");
         this.searchBox = page.locator("(//input[@placeholder='Find your product'])[1]");
@@ -17,7 +18,12 @@ class HomePage {
         await this.page.goto('https://london-drugs-uat-origin.kibology.us/');  // Correct URL
     }
     async searchForProduct(productName) {
-        // await this.page.waitForTimeout(20000);
+        await this.searchBox.fill(productName);
+        await this.searchIcon.click();
+    }
+
+    async searchForProduct1(productName) {
+        await this.page.waitForTimeout(5000);
         await this.searchBox.fill(productName);
         await this.searchIcon.click();
         // await this.page.waitForSelector(this.searchFirstProduct); // Wait for the first product to appear
@@ -28,6 +34,15 @@ class HomePage {
         await this.page.waitForLoadState('domcontentloaded');
         await this.page.waitForTimeout(1000);
         await this.signInButton.click();
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForTimeout(3000);
+    }
+
+    async navigateCreatePage() {
+        await this.page.locator('header aside.items-center svg[role="button"]').first().click({ timeout: 10000 });
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForTimeout(1000);
+        await this.createAccount.click();
         await this.page.waitForLoadState('domcontentloaded');
         await this.page.waitForTimeout(3000);
     }
