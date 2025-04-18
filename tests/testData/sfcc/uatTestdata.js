@@ -10,6 +10,11 @@ module.exports = {
     userEmail: "testimmediate111@yopmail.com",
     password: process.env.PASSWORD,
 
+    // API
+    tenantId: 39863,
+    siteId: 61984,
+    env: "sandbox",
+
     payment: {
         CreditCard: {
             visa: {
