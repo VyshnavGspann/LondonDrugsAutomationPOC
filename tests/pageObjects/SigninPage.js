@@ -117,7 +117,7 @@ class SignInPage {
         await this.page.waitForLoadState('domcontentloaded');
         this.log('Captcha is bypassed.....');
         await this.createAccountButton.click({force: true, timeout: 10000});
-        this.log('Login button is clicked');
+        this.log('create button is clicked');
         await this.page.waitForTimeout(5000);
         await this.page.waitForLoadState('domcontentloaded');
         await this.page.waitForLoadState('load');
