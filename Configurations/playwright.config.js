@@ -67,7 +67,7 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     // trace: 'on-first-retry',
-    trace: 'on',
+    trace: 'off',
     screenshot : { mode: 'on', fullPage: true},
     video : 'on-first-retry',
     //baseURL : "https://development-instance.worldmarket.com/",
@@ -82,7 +82,6 @@ module.exports = defineConfig({
       '--disable-setuid-sandbox', // Disables the setuid sandbox (Linux only).
       '--ignore-certificate-errors', // Ignores certificate errors, allowing testing on sites with invalid certs.
       '--ignore-ssl-errors', // Similar to ignore certificate errors but for SSL protocol errors.
-      `--proxy-server=http://localhost:8080`, // Use a proxy server for network requests. Useful for capturing network traffic.
   ],
   },
 
