@@ -8,12 +8,13 @@ const {OrderConfirmationPage} = require('../../../pageObjects/OrderConfirmationP
 
 const application = process.env.TEST_APP; // "OMS" or "SFCC"
 const environment = process.env.TEST_ENV; // "qa" or "staging" or "uat"
+// const environment = "uat";
 // The commented line will be uncommented while pushing the code to Github
 const testData = require(`../../../testData/sfcc/${environment}TestData.js`);
 
 test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
     const context = await browser.newContext();
-    
+    testData.password = "Apva@2025";
     const rawCookieString = testData.dataDomekey
     const domain = testData.domain;
     const cookies = rawCookieString.split('; ').map(cookie => {
