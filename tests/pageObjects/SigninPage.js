@@ -61,9 +61,9 @@ class SignInPage {
         this.log('Email is filled');
         await this.passwordInput.fill(password,  {timeout: 10000});
         this.log('Password is filled');
-        await this.captchaCheckbox.click({timeout: 10000});
+        await this.captchaCheckbox.click({timeout: 30000});
         await this.page.evaluate(() => {  document.querySelector('iframe[title="reCAPTCHA"]').remove(); });
-        await this.page.waitForTimeout(1000);
+        await this.page.waitForTimeout(30000);
         await this.page.waitForLoadState('domcontentloaded');
         await this.page.evaluate(() => {  document.querySelector('textarea.g-recaptcha-response').remove(); });
         await this.page.waitForTimeout(1000);
@@ -105,7 +105,7 @@ class SignInPage {
         await this.LDAccountConfPhone.fill(phoneNumber)
         await this.LDAccountCreatePassword.fill(password)
         await this.LDAccountConfCreatePassword.fill(password)
-        await this.captchaCheckbox.click({timeout: 10000});
+        await this.captchaCheckbox.click({timeout: 30000});
         await this.page.evaluate(() => {  document.querySelector('iframe[title="reCAPTCHA"]').remove(); });
         await this.page.waitForTimeout(1000);
         await this.page.waitForLoadState('domcontentloaded');

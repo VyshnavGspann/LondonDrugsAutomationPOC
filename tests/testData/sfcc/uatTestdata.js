@@ -2,9 +2,9 @@
 //Test data specific to SFCC qa environment
 
 module.exports = {
-    baseUrl: 'https://https://london-drugs-uat-origin.kibology.us/',
+    baseUrl: 'https://london-drugs-uat-origin.kibology.us/',
   
-    dataDomekey: 'datadome=rV3Dhd6iNXYyXV3R2~t6rvYZx3BROLwimSaWDaRC8wxba_kHjRa8wcQ3NXqLUbAJewb~YFjrZ30ZoVNEFXVmJgbY_Qnz1FVrAO0yHtNcZs_1l~_R~hg~_6P9_bw3Hod7',
+    dataDomekey: 'datadome=jMJCxhv5EHZen4uuGXz_ooQxAbfDJgkdbVUxRQsIALMc3Eyjf7OgouHy9FfQT6GtdZv6P42ZyPVK4E8JNKkDWxbGpUQOR44u6qkpWI9dL_~I1aIQgTTWM8ttYZzHGUYo',
     domain: "london-drugs-uat-origin.kibology.us",
 
     userEmail: "testimmediate111@yopmail.com",

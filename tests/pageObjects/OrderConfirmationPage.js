@@ -8,8 +8,8 @@ class OrderConfirmationPage {
     }
 
     async verifythanksMessageAppears() {
-        await this.page.waitForTimeout(20000);
-        expect(this.page.getByText('Thank you for your order'), 'Thank you for your order is not visible').toBeVisible({timeout: 10000});
+        await this.page.waitForTimeout(30000);
+        await expect(this.page.getByText('Thank you for your order'), 'Thank you for your order is not visible').toBeVisible({timeout: 10000});
     }
 
     // Proceed to checkout

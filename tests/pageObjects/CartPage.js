@@ -12,6 +12,9 @@ class CartPage {
     async addProductToCart() {
         await this.searchFirstProduct.click();
         // await this.page.waitForSelector(this.addtoCartButton); // Wait for Add to Cart button to appear
+        await this.page.waitForTimeout(5000); 
+        await this.page.waitForSelector("//span[text()='ADD TO CART']")
+        await expect(this.addtoCartButton).toBeEnabled()
         await this.addtoCartButton.click();
        // await this.page.waitForSelector(this.viewCartCheckout); // Ensure the cart page is visible
     }

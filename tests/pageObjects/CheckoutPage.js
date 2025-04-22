@@ -50,6 +50,7 @@ class CheckoutPage {
     }
 
     async placeyourOrder() {
+        await this.page.waitForTimeout(10000);
         await this.TermsCondCheckBox.click();
         await this.placeYourOrder.click();
         // expect(this.page.getByText('Thank you for your order'), 'thanks message is not visible').toBeVisible({timeout: 10000});
@@ -70,7 +71,7 @@ class CheckoutPage {
         }
 
         async addShippingAddress(shippingData = {}) {
-            await this.page.waitForTimeout(3000);    
+            await this.page.waitForTimeout(10000);    
             await this.userEmail.fill(shippingData.email);
             await this.userFirstName.fill(shippingData.firstName);
             await this.userLaststName.fill(shippingData.lastName);
