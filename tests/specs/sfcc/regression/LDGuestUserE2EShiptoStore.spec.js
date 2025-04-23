@@ -11,7 +11,7 @@ const environment = process.env.TEST_ENV; // "qa" or "staging" or "uat"
 // The commented line will be uncommented while pushing the code to Github
 const testData = require(`../../../testData/sfcc/${environment}TestData.js`);
 
-test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
+test('E2E Test Ordercreation for Ship To Store',  async ({ browser }) => {
     const context = await browser.newContext();
     
     const rawCookieString = testData.dataDomekey
@@ -41,13 +41,19 @@ test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
     await productPage.saveProductNameAndGoToProductPage();
     await productPage.validateProductTitle();
     await productPage.saveProductPrice();
+    await productPage.selectInStorePickUpRadioButton();
+    await productPage.enterPostalCodeForShipToStore();
+    await productPage.clickOnSearchPostalButton();
+    await productPage.clickOnSetStoreButton();
     await productPage.addProductToCart();
     await productPage.validateProductPriceInCart();
     await productPage.proceedToCheckout();
     const checkoutPage = new CheckoutPage(page);
-    await checkoutPage.addShippingAddress(testData.shipping)
+    await checkoutPage.enterEmail();
     await checkoutPage.proceedToBilling();
-    await checkoutPage.cardPayment(testData.payment.CreditCard.visa);
+    await checkoutPage.addShippingAddressforInStorePickup(testData.shippingInStore); 
+    await checkoutPage.selectCardType();
+    await checkoutPage.cardPayment(testData.payment.CreditCard.master);
     await checkoutPage.placeyourOrder();
     const orderConfirmationPage = new OrderConfirmationPage(page);
     await orderConfirmationPage.verifythanksMessageAppears();   

@@ -2,12 +2,12 @@
 //Test data specific to SFCC qa environment
 
 module.exports = {
-    baseUrl: 'https://https://london-drugs-uat-origin.kibology.us/',
+    baseUrl: 'https://london-drugs-uat-origin.kibology.us/',
   
-    dataDomekey: 'datadome=rV3Dhd6iNXYyXV3R2~t6rvYZx3BROLwimSaWDaRC8wxba_kHjRa8wcQ3NXqLUbAJewb~YFjrZ30ZoVNEFXVmJgbY_Qnz1FVrAO0yHtNcZs_1l~_R~hg~_6P9_bw3Hod7',
+    dataDomekey: 'datadome=D1IxNU83zFuFRswETebd6layiMAr7C~yiRcesmv44THlqK4PjxWpXegvhDhzy4MYJntRJrRlfk4~ZYsUPUscgB6gd4Gw~PHmc4J6wiUOGbZroKF3E_JJJm7kGPJW8MnB',
     domain: "london-drugs-uat-origin.kibology.us",
 
-    userEmail: "testimmediate111@yopmail.com",
+    userEmail: "testimmediatelondon1@yopmail.com",
     password: process.env.PASSWORD,
 
     // API
@@ -31,7 +31,9 @@ module.exports = {
 
             },
             master: {
-
+                nameOnCard: 'Test Accept',
+                cardNumber: '5431111111111111',
+                cvv: '123',
             },
 
         },
@@ -51,6 +53,32 @@ module.exports = {
         city: 'Stittsville',
         zipcode: 'K2V 0C8',
         phone: '555-555-5555',
+    },
+
+    shippingInStore: {
+        firstName: 'John',
+        lastName: 'Accept',
+        phone: '789 033-4541',
+        address1: '116 Harley Street',
+        city: 'Rimouski',
+        postalCode: "G5L 0A0",
+    },
+
+    doorDash: {
+        address1: '500 - 8888 Country Hills Blvd NW',
+        city: 'Calgary',
+        postalCode: "T3G 5T4",
+    },
+
+    doorDashShipping: {
+        email: 'tes1t@example.com',
+        firstName: 'Keil',
+        lastName: 'Accept',
+        address1: '500 - 8888 Country Hills Blvd NW',
+        address2: 'Apt 101',
+        city: 'Calgary',
+        zipcode: 'T3G 5T4',
+        phone: '+13434129791',
     },
 
     productData: {

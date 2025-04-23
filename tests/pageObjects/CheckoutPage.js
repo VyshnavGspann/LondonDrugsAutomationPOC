@@ -19,8 +19,9 @@ class CheckoutPage {
         this.enterYourNameCard = page.locator("//input[@placeholder='Enter your Name on Card']");
         this.enterCardNumber = page.locator("//input[@placeholder='Enter your Card Number']");
         this.enterCVV = page.locator("//input[contains(@style, 'background-image: url') and @name='cvv']");
-        this.TermsCondCheckBox = page.locator("//input[@type='checkbox' and @id='accept']")
-      
+        this.TermsCondCheckBox = page.locator("//input[@type='checkbox' and @id='accept']");
+        this.postalCode = page.locator("//input[@placeholder= 'Postal Code']");
+       // this.cardTypeLocator = page.locator("//select[@name = 'cardType']");
     }
 
     async fillUserInformation({ email, firstName, lastName, address1, address2, city, zipcode, phone }) {
@@ -90,7 +91,25 @@ class CheckoutPage {
             await this.popUpuseThisAddressButton.click();
 
         }
-        
+
+        async enterEmail() {
+            await this.page.waitForTimeout(3000);    
+            await this.userEmail.fill("testimmediatelondon1@yopmail.com");
+        }
+
+        async addShippingAddressforInStorePickup(shippingData = {}) {
+            await this.page.waitForTimeout(3000);    
+            await this.userFirstName.fill(shippingData.firstName);
+            await this.userLaststName.fill(shippingData.lastName);
+            await this.userPhoneNumber.fill(shippingData.phone);
+            await this.userAddress1.fill(shippingData.address1);
+            await this.postalCode.fill(shippingData.postalCode)
+            await this.userCity.fill(shippingData.city);
+        }
+
+        async selectCardType() {
+            await this.page.locator("//select[@name = 'cardType']").selectOption({label:'MasterCard'});
+        }
 }
 
     module.exports = { CheckoutPage };

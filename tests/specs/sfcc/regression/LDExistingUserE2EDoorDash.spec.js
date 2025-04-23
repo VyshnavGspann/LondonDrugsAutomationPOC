@@ -11,7 +11,7 @@ const environment = process.env.TEST_ENV; // "qa" or "staging" or "uat"
 // The commented line will be uncommented while pushing the code to Github
 const testData = require(`../../../testData/sfcc/${environment}TestData.js`);
 
-test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
+test('E2E Test Ordercreation for Door Dash.',  async ({ browser }) => {
     const context = await browser.newContext();
     
     const rawCookieString = testData.dataDomekey
@@ -36,6 +36,9 @@ test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
     const homePage = new HomePage(page);
     const signInPage = new SignInPage(page);
     await homePage.goTo();
+    // await homePage.navigateToLoginPage();
+    // await signInPage.performLogin(testData.userEmail, testData.password);
+    // await homePage.searchForProduct1('L3166675');
     await homePage.searchForProduct('L3166675');
     const productPage = new CartPage(page);
     await productPage.saveProductNameAndGoToProductPage();
@@ -43,11 +46,16 @@ test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
     await productPage.saveProductPrice();
     await productPage.addProductToCart();
     await productPage.validateProductPriceInCart();
-    await productPage.proceedToCheckout();
+    await productPage.viewAndCheckoutButton();
+    await productPage.clickDoorDashRadioButton();
+    await productPage.addSameDayDeliveryAddress(testData.doorDash);
+    await productPage.selectProvinceAddress();
+    await productPage.proceedToCheckoutDoorDash();
     const checkoutPage = new CheckoutPage(page);
-    await checkoutPage.addShippingAddress(testData.shipping)
+    await checkoutPage.addShippingAddress(testData.doorDashShipping)
     await checkoutPage.proceedToBilling();
-    await checkoutPage.cardPayment(testData.payment.CreditCard.visa);
+    await checkoutPage.selectCardType();
+    await checkoutPage.cardPayment(testData.payment.CreditCard.master);
     await checkoutPage.placeyourOrder();
     const orderConfirmationPage = new OrderConfirmationPage(page);
     await orderConfirmationPage.verifythanksMessageAppears();   
