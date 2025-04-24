@@ -61,7 +61,7 @@ class SignInPage {
         this.log('Email is filled');
         await this.passwordInput.fill(password,  {timeout: 10000});
         this.log('Password is filled');
-        await this.captchaCheckbox.click({timeout: 10000});
+        await this.captchaCheckbox.click({timeout: 20000});
         await this.page.evaluate(() => {  document.querySelector('iframe[title="reCAPTCHA"]').remove(); });
         await this.page.waitForTimeout(1000);
         await this.page.waitForLoadState('domcontentloaded');

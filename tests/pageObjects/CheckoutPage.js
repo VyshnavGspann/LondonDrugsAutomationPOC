@@ -19,8 +19,9 @@ class CheckoutPage {
         this.enterYourNameCard = page.locator("//input[@placeholder='Enter your Name on Card']");
         this.enterCardNumber = page.locator("//input[@placeholder='Enter your Card Number']");
         this.enterCVV = page.locator("//input[contains(@style, 'background-image: url') and @name='cvv']");
-        this.TermsCondCheckBox = page.locator("//input[@type='checkbox' and @id='accept']")
-      
+        this.TermsCondCheckBox = page.locator("//input[@type='checkbox' and @id='accept']");
+        this.postalCode = page.locator("//input[@placeholder= 'Postal Code']");
+       // this.cardTypeLocator = page.locator("//select[@name = 'cardType']");
     }
 
     async fillUserInformation({ email, firstName, lastName, address1, address2, city, zipcode, phone }) {
@@ -38,6 +39,7 @@ class CheckoutPage {
     }
     async proceedToBilling() {
         await this.proceedToBillingButton.click();
+        console.log("Proceed to Billing button clicked");
         // await this.page.waitForSelector(this.placeYourOrder); // Wait for Place your Order button
     }
 
@@ -52,6 +54,7 @@ class CheckoutPage {
     async placeyourOrder() {
         await this.TermsCondCheckBox.click();
         await this.placeYourOrder.click();
+        console.log("Place your order button clicked");
         // expect(this.page.getByText('Thank you for your order'), 'thanks message is not visible').toBeVisible({timeout: 10000});
         // await this.page.waitForSelector(this.placeYourOrder); // Wait for Place your Order button
     }
@@ -67,10 +70,11 @@ class CheckoutPage {
     async cardPayment(paymentData = {}) {
             await this.enterCreditCardDetails(paymentData);
             await this.reviewYourOrder.click();
+            console.log("Review order button clicked");
         }
 
         async addShippingAddress(shippingData = {}) {
-            await this.page.waitForTimeout(3000);    
+            await this.page.waitForTimeout(30000);    
             await this.userEmail.fill(shippingData.email);
             await this.userFirstName.fill(shippingData.firstName);
             await this.userLaststName.fill(shippingData.lastName);
@@ -81,6 +85,18 @@ class CheckoutPage {
             await this.userPhoneNumber.fill(shippingData.phone);
             await this.useThisAddressButton.click();
             await this.popUpuseThisAddressButton.click();
+            console.log("Shipping address added successfully and use address button clicked");
+
+        }
+
+        async addShippingAddressForExistingUser(shippingData = {}) {
+            await this.page.waitForTimeout(30000);    
+            await this.userFirstName.fill(shippingData.firstName);
+            await this.userLaststName.fill(shippingData.lastName);
+            await this.userPhoneNumber.fill(shippingData.phone);
+            await this.useThisAddressButton.click();
+            await this.popUpuseThisAddressButton.click();
+            console.log("Use Address button clicked");
 
         }
 
@@ -88,9 +104,30 @@ class CheckoutPage {
             await this.page.waitForTimeout(3000);    
             await this.useThisAddressButton.click();
             await this.popUpuseThisAddressButton.click();
+    
 
         }
-        
+
+        async enterEmail() {
+            await this.page.waitForTimeout(10000);    
+            await this.userEmail.fill("testimmediatelondon1@yopmail.com");
+            console.log("Entered email address: testimmediatelondon1@yopmail.com" )
+        }
+
+        async addShippingAddressforInStorePickup(shippingData = {}) {
+            await this.page.waitForTimeout(3000);    
+            await this.userFirstName.fill(shippingData.firstName);
+            await this.userLaststName.fill(shippingData.lastName);
+            await this.userPhoneNumber.fill(shippingData.phone);
+            await this.userAddress1.fill(shippingData.address1);
+            await this.postalCode.fill(shippingData.postalCode)
+            await this.userCity.fill(shippingData.city);
+        }
+
+        async selectCardType() {
+            await this.page.locator("//select[@name = 'cardType']").selectOption({label:'MasterCard'});
+            console.log("Selected card type is : Master Card");
+        }
 }
 
     module.exports = { CheckoutPage };
