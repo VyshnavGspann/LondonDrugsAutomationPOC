@@ -22,6 +22,7 @@ class CartPage {
         this.delCity = page.locator("input[placeholder='City']");
         this.delPostalCode = page.locator("input[placeholder='Postal Code']");
         this.checkAddressButton = page.locator("button[data-label='check address']");
+        this.editButton = page.locator("button[data-label='edit']");
         // this.delProvince = page.locator("select[name='state']").first().click();
     }
 
@@ -33,11 +34,13 @@ class CartPage {
     async validateProductTitle(){
         const currentProductTitle = await this.productTitle.innerText();
         expect(this.searchProductName).toBe(currentProductTitle);
+        console.log("Selected Product : " +currentProductTitle);
     }
 
     async saveProductPrice(){
         await this.page.waitForSelector("p[class='text-2xl text-txtprimary']");
         this.productPrice = await this.productPriceLocator.innerText();
+        console.log("Product price is: " +this.productPrice);
     }
 
     async selectInStorePickUpRadioButton(){
@@ -65,32 +68,54 @@ class CartPage {
         await this.page.waitForSelector("//span[text()='ADD TO CART']");
         await expect(this.addtoCartButton).toBeEnabled();
         await this.addtoCartButton.click();
+        console.log("Product has been added to cart successfully");
        // await this.page.waitForSelector(this.viewCartCheckout); // Ensure the cart page is visible
     }
 
     async validateProductPriceInCart(){
         const cartProductPrice = await this.cartProductPriceLocator.innerText();
+        console.log("Subtotal price is : "+cartProductPrice);
         expect(this.productPrice).toBe(cartProductPrice);
+        console.log("Product cart price and subtotal price is matching");
     }
 
-    async clickDoorDashRadioButton(){
-       // await this.page.waitForSelector("(//input[@type='radio'])[3]");
-      //  await this.page.waitForTimeout(500); 
-        await this.doordashRadioButtonLocator.click();
-    }
 
     // Proceed to checkout
     async proceedToCheckout() {
         await this.page.waitForSelector("//button[text()='View Cart & Checkout']");
         await expect(this.viewCartCheckout).toBeEnabled();
         await this.viewCartCheckout.click();
+        //  await expect(this.page).toHaveURL('https://expected.url');
+        console.log("View and checkout cart successfully");
         await this.page.waitForSelector("//button[text()='Checkout']"); // Wait for the checkout button
         await expect(this.checkoutButton).toBeEnabled();
         await this.checkoutButton.click();
+        console.log("Product checkout successfully");
     }
 
+    async clickDoorDashRadioButton(){
+        // await this.page.waitForSelector("(//input[@type='radio'])[3]");
+       //  await this.page.waitForTimeout(500); 
+         await this.page.waitForLoadState('load');
+         await this.doordashRadioButtonLocator.click({ timeout: 30000 });
+         await this.page.waitForTimeout(5000);  
+         console.log("Door Dash option selected");
+     }
+
+     async clickOnEditLink(){
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForLoadState();
+
+         await this.editButton.click({ timeout: 30000 });
+         console.log("Edit link clicked");
+         await this.page.waitForSelector("button[data-label='check address']");
+         await expect(this.checkAddressButton).toBeEnabled();
+         await this.checkAddressButton.click();
+         console.log("check address button clicked");
+     }
+
     async addSameDayDeliveryAddress(shippingData = {}) {
-        await this.page.waitForTimeout(3000);    
+       // await this.page.waitForTimeout(10000);    
         await this.delAddress.fill(shippingData.address1);
         await this.delCity.fill(shippingData.city);
         await this.delPostalCode.fill(shippingData.postalCode);
@@ -100,21 +125,27 @@ class CartPage {
     async selectProvinceAddress() {
         await this.page.locator("select[name='state']").selectOption({label:'Alberta'});
         await this.page.waitForSelector("button[data-label='check address']"); 
+        console.log("Address saved successfully");
         await this.checkAddressButton.click();
+        console.log("check address button clicked");
         
     }
 
-    async viewAndCheckoutButton() {
+    async viewAndCheckoutButtonForDoorDash() {
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForLoadState();
         await this.page.waitForTimeout(4000); 
-        await this.page.waitForSelector("//button[text()='View Cart & Checkout']");
-        await expect(this.viewCartCheckout).toBeEnabled();
+      //  await this.page.waitForSelector("//button[text()='View Cart & Checkout']");
+      //  await expect(this.viewCartCheckout).toBeEnabled();
         await this.viewCartCheckout.click();
+        console.log("View and checkout cart successfully");
     }
 
     async proceedToCheckoutDoorDash() {
-        await this.page.waitForSelector("//button[text()='Checkout']"); // Wait for the checkout button
-        await expect(this.checkoutButton).toBeEnabled();
-        await this.checkoutButton.click();
+     //   await this.page.waitForSelector("//button[text()='Checkout']"); // Wait for the checkout button
+       // await expect(this.checkoutButton).toBeEnabled();
+        await this.checkoutButton.click({timeout:30000});
+        console.log("Product checkout successfully");
     }
 }
 

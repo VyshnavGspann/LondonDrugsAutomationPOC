@@ -47,10 +47,12 @@ test('E2E Test Ordercreation for Door Dash.',  async ({ browser }) => {
     await productPage.addProductToCart();
     await productPage.validateProductPriceInCart();
     await productPage.viewAndCheckoutButtonForDoorDash();
-    await productPage.clickOnEditLink();
+    await productPage.clickDoorDashRadioButton();
+    await productPage.addSameDayDeliveryAddress(testData.doorDash);
+    await productPage.selectProvinceAddress();
     await productPage.proceedToCheckoutDoorDash();
     const checkoutPage = new CheckoutPage(page);
-    await checkoutPage.addShippingAddressForExistingUser(testData.doorDashShipping)
+    await checkoutPage.addShippingAddress(testData.doorDashShipping)
     await checkoutPage.proceedToBilling();
   //  await checkoutPage.selectCardType();
     await checkoutPage.cardPayment(testData.payment.CreditCard.visa);
