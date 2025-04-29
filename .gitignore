@@ -1,6 +1,0 @@
-test-results
-allure-report
-allure-results
-node_modules
-.DS_Store
-tests/testData/sfcc/xmldownload/
