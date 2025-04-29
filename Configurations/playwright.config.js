@@ -70,7 +70,7 @@ module.exports = defineConfig({
     actionTimeout: 25000,
     // Default test timeout (not just action/assert)
     timeout: 30000, // 30 seconds per test
-    trace: 'off',
+    trace: 'on',
     screenshot : { mode: 'on', fullPage: true},
     video : 'on-first-retry',
     //baseURL : "https://development-instance.worldmarket.com/",

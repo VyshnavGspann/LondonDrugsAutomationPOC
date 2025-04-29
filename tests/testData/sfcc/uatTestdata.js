@@ -4,7 +4,7 @@
 module.exports = {
     baseUrl: 'https://london-drugs-uat-origin.kibology.us/',
   
-    dataDomekey: 'datadome=9CPD7aX4nuazWmqKUh0lIwSkOVih6Y3i4XiVuIJrXWGjOzXGTy8_uVOVrGAVYoLFqkkYbLl5tRtJ8XTfeLAoRhXYEZnUPhH_uESB6fSEmNYxJ2SXx~OvlXKJtmALS7Fr',
+    dataDomekey: 'datadome=KxgiKtgRRZ4PczhEMHaql_8kjcSjwp6ec6IHOZRvj9PlAJDlOx0sqFiXqoRRVvFjSDLw04bTSX5UPKY~5rBGReWxlHfRtvk0naWorBTsWYI4MQNpc29v5Qqq4DhAcvZU',
     domain: "london-drugs-uat-origin.kibology.us",
 
     userEmail: "testimmediatelondon1@yopmail.com",

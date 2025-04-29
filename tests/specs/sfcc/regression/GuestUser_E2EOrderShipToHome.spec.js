@@ -11,8 +11,8 @@ const environment = process.env.TEST_ENV; // "qa" or "staging" or "uat"
 // The commented line will be uncommented while pushing the code to Github
 const testData = require(`../../../testData/sfcc/${environment}TestData.js`);
 
-test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
-    const context = await browser.newContext();
+test('E2E Test Ordercreation for Ship to home.',  async ({ page }) => {
+    const context = await page.context();
     
     const rawCookieString = testData.dataDomekey
     const domain = testData.domain;
@@ -31,8 +31,7 @@ test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
 
     console.log('Parsed cookies:', cookies);
     await context.addCookies(cookies);
-
-    const page = await context.newPage();
+    
     const homePage = new HomePage(page);
     const signInPage = new SignInPage(page);
     await homePage.goTo();
