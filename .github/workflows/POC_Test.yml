@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout git repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
       
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3.9.1
         with:
           node-version: '23' # Specify your Node.js version here
 
@@ -32,7 +32,7 @@ jobs:
 
       - name: Run Playwright Tests
         run: |
-            npm run sfcc:guestUser:test
+            npx playwright test tests/specs/sfcc/regression/GuestUser_E2EOrderShipToHome.spec.js --workers=1 --config=Configurations/playwright.config.js
         env:
           TEST_APP: sfcc
           TEST_ENV: uat
