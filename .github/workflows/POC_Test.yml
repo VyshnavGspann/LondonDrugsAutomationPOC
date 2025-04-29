@@ -30,7 +30,7 @@ jobs:
 
       - name: Run Playwright Tests
         run: |
-            npm run sfcc:qa:sanity
+            npm run sfcc:guestUser:test
         continue-on-error: true
 
       - name: Generate Allure report
