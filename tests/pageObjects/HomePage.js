@@ -1,6 +1,5 @@
 // pageObjects/HomePage.js
 const { expect } = require('@playwright/test');
-const uatTestData = require('../testData/sfcc/uatTestData');
 
 class HomePage {
     constructor(page) {
@@ -13,9 +12,9 @@ class HomePage {
         this.searchIcon = page.locator("(//*[@stroke='currentColor' and @fill='currentColor'])[1]");
     }
 
-    async goTo() {
+    async goTo(url) {
         // await this.page.goto('https://london-drugs-uat-origin.kibology.us/products/maybelline-volumexpress-the-colossal-mascara/p/M0000453?Variant%20Color=GLAM_BLACK/');  // Correct URL
-        await this.page.goto(uatTestData.baseUrl);  // Correct URL
+        await this.page.goto(url);  // Correct URL
     }
     async searchForProduct(productName) {
         await this.searchBox.fill(productName);

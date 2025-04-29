@@ -31,10 +31,10 @@ test('E2E Test Ordercreation for Ship to home.',  async ({ page }) => {
 
     console.log('Parsed cookies:', cookies);
     await context.addCookies(cookies);
-    
+
     const homePage = new HomePage(page);
     const signInPage = new SignInPage(page);
-    await homePage.goTo();
+    await homePage.goTo(testData.baseUrl);
     await homePage.searchForProduct('L3166675');
     const productPage = new CartPage(page);
     await productPage.saveProductNameAndGoToProductPage();
