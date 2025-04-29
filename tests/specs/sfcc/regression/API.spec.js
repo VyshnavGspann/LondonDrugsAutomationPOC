@@ -12,13 +12,11 @@ test.describe('API Test', async () => {
         const apiHelper = new API_Helper(testData.tenantId, testData.siteId, testData.env);
         const accessToken = await apiHelper.getAccessToken(testData.clientId, testData.clientSecret);
         
-        const orderId = 20602;
+        const orderId = 20903;
         const shipmentNumber = await apiHelper.getShipmentNumber(orderId);
         await apiHelper.executeAcceptShipmentAPI(shipmentNumber);
         await apiHelper.executeValidateItemsInStockAPI(shipmentNumber, [{productQty:1}, {productQty:1}]);
         await apiHelper.executePrintPackingSlipAPI(shipmentNumber);
-        
-
 
     });
 });
