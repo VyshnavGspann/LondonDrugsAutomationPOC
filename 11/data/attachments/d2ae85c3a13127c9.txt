@@ -1,0 +1,11 @@
+Parsed cookies: [
+  {
+    name: 'datadome',
+    value: 'KxgiKtgRRZ4PczhEMHaql_8kjcSjwp6ec6IHOZRvj9PlAJDlOx0sqFiXqoRRVvFjSDLw04bTSX5UPKY~5rBGReWxlHfRtvk0naWorBTsWYI4MQNpc29v5Qqq4DhAcvZU',
+    domain: 'london-drugs-uat-origin.kibology.us',
+    path: '/',
+    httpOnly: false,
+    secure: true,
+    sameSite: 'Lax'
+  }
+]
