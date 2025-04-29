@@ -1,0 +1,498 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: E2E Test Ordercreation for Ship to home.
+- Location: /home/runner/work/LondonDrugsAutomationPOC/LondonDrugsAutomationPOC/tests/specs/sfcc/regression/GuestUser_E2EOrderShipToHome.spec.js:15:1
+
+# Error details
+
+```
+TimeoutError: locator.innerText: Timeout 25000ms exceeded.
+Call log:
+  - waiting for locator('xpath=(//h3[@class=\'product-name my-2 text-sm leading-7 text-txtprimary md:text-base\'])[1]')
+
+    at CartPage.saveProductNameAndGoToProductPage (/home/runner/work/LondonDrugsAutomationPOC/LondonDrugsAutomationPOC/tests/pageObjects/CartPage.js:30:69)
+    at /home/runner/work/LondonDrugsAutomationPOC/LondonDrugsAutomationPOC/tests/specs/sfcc/regression/GuestUser_E2EOrderShipToHome.spec.js:41:23
+```
+
+# Page snapshot
+
+```yaml
+- alert
+- 'link "Last Chance Clearance: new items are added weekly online and in-store. Shop now"':
+  - paragraph:
+    - strong: "Last Chance Clearance:"
+  - paragraph: new items are added weekly online and in-store. Shop now
+- article:
+  - list:
+    - listitem:
+      - 'link "Customer Service: 1-888-991-2299"'
+      - text: "|"
+    - listitem:
+      - link "Travel Essentials"
+      - text: "|"
+    - listitem:
+      - link "30-Day Price Match Guarantee"
+- banner:
+  - link "London Drugs":
+    - img "London Drugs"
+  - textbox: L3166675
+  - img
+  - complementary:
+    - list:
+      - listitem:
+        - link "Select Your Store":
+          - img
+          - text: Select Your Store
+    - complementary:
+      - complementary:
+        - button
+      - link "Show Wishlist Items":
+        - img
+        - img "Add to Registry Icon"
+      - button "Show Mini Cart Items":
+        - img
+  - button "Opens Mega Menu":
+    - img
+  - text: Shop by Category
+  - list:
+    - listitem:
+      - link "Deals & Events"
+    - listitem:
+      - link "Services"
+    - listitem:
+      - img "Pharmacy"
+      - link "Pharmacy"
+    - listitem:
+      - img "PhotoLab"
+      - link "PhotoLab"
+    - listitem:
+      - link "Gift Registry"
+    - listitem:
+      - link "LDExtras":
+        - strong: LD
+        - emphasis: Extras
+  - link "Flyers Logo Flyers":
+    - img "Flyers Logo"
+    - text: Flyers
+- main:
+  - complementary:
+    - checkbox "All Filters close sidebar"
+    - checkbox "Categories close sidebar"
+    - button "Proudly Canadian"
+    - img
+    - text: All Filters Categories
+    - 'button "Sort by: Recommended"':
+      - paragraph: "Sort by: Recommended"
+      - img
+    - heading "Categories" [level=2]
+    - button "close-button":
+      - img
+    - separator
+    - heading "Filter By:" [level=2]
+    - button "close-button":
+      - img
+    - separator
+    - checkbox
+    - heading "Sub Department" [level=3]
+    - separator
+    - checkbox
+    - heading "Sub Class Mapping" [level=3]
+    - separator
+    - checkbox
+    - heading "Brand" [level=3]
+    - separator
+    - checkbox
+    - heading "Price" [level=3]
+    - separator
+    - checkbox
+    - heading "Colour" [level=3]
+    - separator
+    - checkbox
+    - heading "Proudly Canadian" [level=3]
+    - separator
+    - button "Clear"
+    - button "Show results"
+  - link "Maybelline Volum'Express the Colossal Mascara Canadian Proud":
+    - img "Maybelline Volum'Express the Colossal Mascara"
+    - img "Canadian Proud"
+  - list:
+    - listitem:
+      - img "Classic Black"
+    - listitem:
+      - img "Glam Black"
+    - listitem:
+      - img "Waterproof Glam Black"
+  - link "MAYBELLINE VEX MASC":
+    - paragraph: MAYBELLINE VEX MASC
+  - link "Maybelline Volum'Express the Colossal Mascara - Glam Black":
+    - heading "Maybelline Volum'Express the Colossal Mascara - Glam Black" [level=3]
+  - button "Adding to wishlist Button":
+    - img
+  - link "$2.50 - $11.99"
+  - link "0.0 out of 5 stars."
+  - link "Check Nearby Availability":
+    - paragraph: Check Nearby Availability
+  - link "Brother LC71BKS Ink Cartridge - Black - LC71BKS":
+    - img "Brother LC71BKS Ink Cartridge - Black - LC71BKS"
+  - link "BROTHER":
+    - paragraph: BROTHER
+  - link "Brother LC71BKS Ink Cartridge - Black - LC71BKS":
+    - heading "Brother LC71BKS Ink Cartridge - Black - LC71BKS" [level=3]
+  - button "Adding to wishlist Button":
+    - img
+  - link "$25.99"
+  - link "0.0 out of 5 stars."
+  - link "Check Nearby Availability":
+    - paragraph: Check Nearby Availability
+  - link "Canon Cl-261 Colour Ink - 3725C001":
+    - img "Canon Cl-261 Colour Ink - 3725C001"
+  - link "CANON":
+    - paragraph: CANON
+  - link "Canon Cl-261 Colour Ink - 3725C001":
+    - heading "Canon Cl-261 Colour Ink - 3725C001" [level=3]
+  - button "Adding to wishlist Button":
+    - img
+  - link "$37.99"
+  - link "0.0 out of 5 stars."
+  - link "Check Nearby Availability":
+    - paragraph: Check Nearby Availability
+  - link "BROTHER LC4013PKS COLOUR INK LC4013PKS":
+    - img "BROTHER LC4013PKS COLOUR INK LC4013PKS"
+  - link "BROTHER":
+    - paragraph: BROTHER
+  - link "BROTHER LC4013PKS COLOUR INK LC4013PKS":
+    - heading "BROTHER LC4013PKS COLOUR INK LC4013PKS" [level=3]
+  - button "Adding to wishlist Button":
+    - img
+  - link "$41.99"
+  - link "0.0 out of 5 stars."
+  - link "Check Nearby Availability":
+    - paragraph: Check Nearby Availability
+  - link "Tenba Axis V2 Backpack - 24L - TN023535":
+    - img "Tenba Axis V2 Backpack - 24L - TN023535"
+  - link "TENBA":
+    - paragraph: TENBA
+  - link "Tenba Axis V2 Backpack - 24L - TN023535":
+    - heading "Tenba Axis V2 Backpack - 24L - TN023535" [level=3]
+  - button "Adding to wishlist Button":
+    - img
+  - link "$399.99"
+  - link "0.0 out of 5 stars."
+  - link "Check Nearby Availability":
+    - paragraph: Check Nearby Availability
+  - link "Kingston 4GB DDR3 1333MHz SO-DIMM - KCP313SS8/4":
+    - img "Kingston 4GB DDR3 1333MHz SO-DIMM - KCP313SS8/4"
+  - link "KINGSTON":
+    - paragraph: KINGSTON
+  - link "Kingston 4GB DDR3 1333MHz SO-DIMM - KCP313SS8/4":
+    - heading "Kingston 4GB DDR3 1333MHz SO-DIMM - KCP313SS8/4" [level=3]
+  - button "Adding to wishlist Button":
+    - img
+  - link "$49.99"
+  - link "0.0 out of 5 stars."
+  - link "Check Nearby Availability":
+    - paragraph: Check Nearby Availability
+  - link "Brother Colour Ink - LC4063PKS":
+    - img "Brother Colour Ink - LC4063PKS"
+  - link "BROTHER":
+    - paragraph: BROTHER
+  - link "Brother Colour Ink - LC4063PKS":
+    - heading "Brother Colour Ink - LC4063PKS" [level=3]
+  - button "Adding to wishlist Button":
+    - img
+  - link "$87.99"
+  - link "0.0 out of 5 stars."
+  - link "Check Nearby Availability":
+    - paragraph: Check Nearby Availability
+  - link "Brother Black Ink - LC406BKS":
+    - img "Brother Black Ink - LC406BKS"
+  - link "BROTHER":
+    - paragraph: BROTHER
+  - link "Brother Black Ink - LC406BKS":
+    - heading "Brother Black Ink - LC406BKS" [level=3]
+  - button "Adding to wishlist Button":
+    - img
+  - link "$48.99"
+  - link "0.0 out of 5 stars."
+  - link "Check Nearby Availability":
+    - paragraph: Check Nearby Availability
+  - link "HP 74 J5700 Series Ink Cartridge - Black - CB335WN":
+    - img "HP 74 J5700 Series Ink Cartridge - Black - CB335WN"
+  - link "HEWLETT PACKARD":
+    - paragraph: HEWLETT PACKARD
+  - link "HP 74 J5700 Series Ink Cartridge - Black - CB335WN":
+    - heading "HP 74 J5700 Series Ink Cartridge - Black - CB335WN" [level=3]
+  - button "Adding to wishlist Button":
+    - img
+  - link "$37.99"
+  - link "0.0 out of 5 stars."
+  - link "Check Nearby Availability":
+    - paragraph: Check Nearby Availability
+  - link "Patchwork - LK3505":
+    - img "Patchwork - LK3505"
+  - link "Patchwork - LK3505":
+    - heading "Patchwork - LK3505" [level=3]
+  - button "Adding to wishlist Button":
+    - img
+  - link "$44.99 $26.99"
+  - link "0.0 out of 5 stars."
+  - link "Check Nearby Availability":
+    - paragraph: Check Nearby Availability
+  - link "Canon CL-261XL Colour Ink - 3724C001":
+    - img "Canon CL-261XL Colour Ink - 3724C001"
+  - link "CANON":
+    - paragraph: CANON
+  - link "Canon CL-261XL Colour Ink - 3724C001":
+    - heading "Canon CL-261XL Colour Ink - 3724C001" [level=3]
+  - button "Adding to wishlist Button":
+    - img
+  - link "$45.99"
+  - link "0.0 out of 5 stars."
+  - link "Check Nearby Availability":
+    - paragraph: Check Nearby Availability
+  - text: Showing 11 out of 11 items
+- heading "Email Newsletter" [level=3]
+- paragraph: Sign up and receive promotions and special offers by email
+- textbox "Enter your email"
+- button "SIGN UP"
+- contentinfo:
+  - paragraph: Our Blogs
+  - link
+  - link "londondrugs blog":
+    - paragraph: LONDON DRUGS BLOG
+  - link
+  - link "greendeal-blog":
+    - paragraph: GREEN DEAL BLOG
+  - text: Our Services
+  - link "prescription-refills":
+    - paragraph: Prescription Refills
+  - link "prescription-delivery":
+    - paragraph: Prescription Delivery
+  - link "apple-services":
+    - paragraph: Apple Service
+  - link "tech-services":
+    - paragraph: TECH Services
+  - link "photography-services":
+    - paragraph: Photography Services
+  - link "insurance-services":
+    - paragraph: Insurance Services
+  - link "subscription-services":
+    - paragraph: Subscription Services
+  - link "travel-clinics":
+    - paragraph: Travel Clinics
+  - link "optical-london-drugs":
+    - paragraph: Optical London Drugs
+  - link "emergency-preparedness":
+    - paragraph: Emergency Preparedness
+  - link "passport-photos":
+    - paragraph: Passport Photos
+  - link "postal-outlets":
+    - paragraph: Postal Outlets
+  - link "tld-computers":
+    - paragraph: TLD Computers
+  - text: Customer Care
+  - link "customer-service":
+    - paragraph: Customer Service
+  - link "email-subscription-settings":
+    - paragraph: Email Subscription Settings
+  - link "contact-us":
+    - paragraph: Contact Us
+  - link "freq-asked":
+    - paragraph: Frequently Asked Questions
+  - link "our-guarantee":
+    - paragraph: Our Guarantee
+  - link "purchase-protection-plans":
+    - paragraph: Purchase Protection Plan
+  - link "product-refills-advisories":
+    - paragraph: Product Recalls & Advisories
+  - link "return-exchanges":
+    - paragraph: Return & Exchanges
+  - link "Shipping & Delivery":
+    - paragraph: Shipping & Delivery
+  - link "FAQ for Quick Refill":
+    - paragraph: FAQ for Quick Refill
+  - text: Company Info
+  - link "CYBER INCIDENT UPDATE - EMPLOYEE NOTICE":
+    - paragraph: CYBER INCIDENT UPDATE - EMPLOYEE NOTICE
+  - link "Believe in Better":
+    - paragraph: Believe in Better
+  - link "Local Central":
+    - paragraph: Local Central
+  - link "Corporate Info":
+    - paragraph: Corporate Info
+  - link "London Drugs Story":
+    - paragraph: London Drugs Story
+  - link "Our Locations":
+    - paragraph: Our Locations
+  - link "careers":
+    - paragraph: Careers
+  - link "community":
+    - paragraph: Community
+  - link "news-events":
+    - paragraph: News & Events
+  - link "news-events":
+    - paragraph: Influencers
+  - link "avoid-recruitment-fraud":
+    - paragraph: Avoid Recruitment Fraud
+  - link "commitment-against-slavery":
+    - paragraph: COMMITMENT AGAINST SLAVERY
+  - paragraph: Connect With Us
+  - link "londondrugs-facebook"
+  - link "londondrugs-twitter"
+  - link "londondrugs-pininterest"
+  - link "londondrugs-instagram"
+  - link "londondrugs-youtube"
+  - link "londondrugs-tiktok"
+  - img "London Drugs Logo"
+  - strong:
+    - link "Legal Terms"
+  - strong:
+    - link "Privacy Policy"
+  - strong:
+    - link "Security Policy & Cookie Notice"
+  - strong:
+    - link "Sitemap"
+  - paragraph: © 2025 London Drugs. All rights reserved.
+```
+
+# Test source
+
+```ts
+   1 | const { expect } = require("playwright/test");
+   2 |
+   3 | class CartPage {
+   4 |     constructor(page) {
+   5 |         this.page = page;
+   6 |         this.searchFirstProduct = page.locator("(//a[@class='product-card-image flex flex-col items-center justify-center'])[1]");
+   7 |         this.searchFirstProductTitle = page.locator("(//h3[@class='product-name my-2 text-sm leading-7 text-txtprimary md:text-base'])[1]");
+   8 |         this.productTitle = page.locator("h1[class='text-txtprimary md:text-3xl']");
+   9 |         this.productPriceLocator = page.locator("p[class='text-2xl text-txtprimary']");
+   10 |         this.cartProductPriceLocator = page.locator("//section[@class='flex-col justify-between']//p[2]");
+   11 |         this.addtoCartButton = page.locator("//span[text()='ADD TO CART']");
+   12 |         this.viewCartCheckout = page.locator("//button[text()='View Cart & Checkout']");
+   13 |         this.checkoutButton = page.locator("//button[text()='Checkout']");
+   14 |         this.searchProductName = "";
+   15 |         this.productPrice = "";
+   16 |         this.inStorePickupRadioButtonLocator = page.locator("input[value='InStorePickup']");
+   17 |         this.enterPostalCodeFieldLocator = page.locator("(//input[@placeholder=' Enter a Postal Code or City*'])[1]");
+   18 |         this.searchStoreButtonLocator = page.locator("//button[@class = 'primary-button w-full px-6 py-3 text-sm']");
+   19 |         this.setStoreButtonLocator = page.locator("(//button[@class = 'primary-button my-2 w-full px-6 py-3 '])[1]");
+   20 |         this.doordashRadioButtonLocator = page.locator("//p[.='Add Address']");
+   21 |         this.delAddress = page.locator("input[name='addressLine1']");
+   22 |         this.delCity = page.locator("input[placeholder='City']");
+   23 |         this.delPostalCode = page.locator("input[placeholder='Postal Code']");
+   24 |         this.checkAddressButton = page.locator("button[data-label='check address']");
+   25 |         this.editButton = page.locator("button[data-label='edit']");
+   26 |         // this.delProvince = page.locator("select[name='state']").first().click();
+   27 |     }
+   28 |
+   29 |     async saveProductNameAndGoToProductPage(){
+>  30 |         this.searchProductName = await this.searchFirstProductTitle.innerText();
+      |                                                                     ^ TimeoutError: locator.innerText: Timeout 25000ms exceeded.
+   31 |         await this.searchFirstProduct.click();
+   32 |     }
+   33 |
+   34 |     async validateProductTitle(){
+   35 |         const currentProductTitle = await this.productTitle.innerText();
+   36 |         expect(this.searchProductName).toBe(currentProductTitle);
+   37 |         console.log("Selected Product : " +currentProductTitle);
+   38 |     }
+   39 |
+   40 |     async saveProductPrice(){
+   41 |         await this.page.waitForSelector("p[class='text-2xl text-txtprimary']");
+   42 |         this.productPrice = await this.productPriceLocator.innerText();
+   43 |         console.log("Product price is: " +this.productPrice);
+   44 |     }
+   45 |
+   46 |     async selectInStorePickUpRadioButton(){
+   47 |         await this.inStorePickupRadioButtonLocator.click();
+   48 |     }
+   49 |
+   50 |     async enterPostalCode(){
+   51 |       await this.enterPostalCodeFieldLocator.fill("T2H 2V2");
+   52 |     }
+   53 |
+   54 |     async enterPostalCodeForShipToStore(){
+   55 |         await this.enterPostalCodeFieldLocator.fill("V6Z 1E4");
+   56 |       }
+   57 |
+   58 |     async clickOnSearchPostalButton(){
+   59 |         await this.searchStoreButtonLocator.click();
+   60 |       }
+   61 |
+   62 |     async clickOnSetStoreButton(){
+   63 |         await this.setStoreButtonLocator.click();
+   64 |     }
+   65 |
+   66 |     async addProductToCart() {
+   67 |         // await this.page.waitForSelector(this.addtoCartButton); // Wait for Add to Cart button to appear
+   68 |         await this.page.waitForSelector("//span[text()='ADD TO CART']");
+   69 |         await expect(this.addtoCartButton).toBeEnabled();
+   70 |         await this.addtoCartButton.click();
+   71 |         console.log("Product has been added to cart successfully");
+   72 |        // await this.page.waitForSelector(this.viewCartCheckout); // Ensure the cart page is visible
+   73 |     }
+   74 |
+   75 |     async validateProductPriceInCart(){
+   76 |         const cartProductPrice = await this.cartProductPriceLocator.innerText();
+   77 |         console.log("Subtotal price is : "+cartProductPrice);
+   78 |         expect(this.productPrice).toBe(cartProductPrice);
+   79 |         console.log("Product cart price and subtotal price is matching");
+   80 |     }
+   81 |
+   82 |
+   83 |     // Proceed to checkout
+   84 |     async proceedToCheckout() {
+   85 |         await this.page.waitForSelector("//button[text()='View Cart & Checkout']");
+   86 |         await expect(this.viewCartCheckout).toBeEnabled();
+   87 |         await this.viewCartCheckout.click();
+   88 |         //  await expect(this.page).toHaveURL('https://expected.url');
+   89 |         console.log("View and checkout cart successfully");
+   90 |         await this.page.waitForSelector("//button[text()='Checkout']"); // Wait for the checkout button
+   91 |         await expect(this.checkoutButton).toBeEnabled();
+   92 |         await this.checkoutButton.click();
+   93 |         console.log("Product checkout successfully");
+   94 |     }
+   95 |
+   96 |     async clickDoorDashRadioButton(){
+   97 |         // await this.page.waitForSelector("(//input[@type='radio'])[3]");
+   98 |        //  await this.page.waitForTimeout(500); 
+   99 |          await this.page.waitForLoadState('load');
+  100 |          await this.doordashRadioButtonLocator.click({ timeout: 30000 });
+  101 |          await this.page.waitForTimeout(5000);  
+  102 |          console.log("Door Dash option selected");
+  103 |      }
+  104 |
+  105 |      async clickOnEditLink(){
+  106 |         await this.page.waitForLoadState('domcontentloaded');
+  107 |         await this.page.waitForLoadState();
+  108 |
+  109 |          await this.editButton.click({ timeout: 30000 });
+  110 |          console.log("Edit link clicked");
+  111 |          await this.page.waitForSelector("button[data-label='check address']");
+  112 |          await expect(this.checkAddressButton).toBeEnabled();
+  113 |          await this.checkAddressButton.click();
+  114 |          console.log("check address button clicked");
+  115 |      }
+  116 |
+  117 |     async addSameDayDeliveryAddress(shippingData = {}) {
+  118 |        // await this.page.waitForTimeout(10000);    
+  119 |         await this.delAddress.fill(shippingData.address1);
+  120 |         await this.delCity.fill(shippingData.city);
+  121 |         await this.delPostalCode.fill(shippingData.postalCode);
+  122 |
+  123 |     }
+  124 |
+  125 |     async selectProvinceAddress() {
+  126 |         await this.page.locator("select[name='state']").selectOption({label:'Alberta'});
+  127 |         await this.page.waitForSelector("button[data-label='check address']"); 
+  128 |         console.log("Address saved successfully");
+  129 |         await this.checkAddressButton.click();
+  130 |         console.log("check address button clicked");
+```
