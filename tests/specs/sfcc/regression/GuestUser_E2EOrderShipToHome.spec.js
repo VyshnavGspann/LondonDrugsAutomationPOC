@@ -9,8 +9,8 @@ const {OrderConfirmationPage} = require('../../../pageObjects/OrderConfirmationP
 const application = process.env.TEST_APP; // "OMS" or "SFCC"
 const environment = process.env.TEST_ENV; // "qa" or "staging" or "uat"
 // The commented line will be uncommented while pushing the code to Github
-// const testData = require(`../../../testData/sfcc/${environment}TestData.js`);
-const testData = require(`../../../testData/sfcc/uatTestData.js`);
+const testData = require(`../../../testData/sfcc/${environment}TestData.js`);
+// const testData = require(`../../../testData/sfcc/uatTestData.js`);
 
 test('E2E Test Ordercreation for Ship to home.',  async ({ page }) => {
     const context = await page.context();
