@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '23' # Specify your Node.js version here
+          node-version: '18' # Specify your Node.js version here
 
       - name: Install dependencies
         run: npm ci
@@ -31,6 +31,10 @@ jobs:
       - name: Run Playwright Tests
         run: |
             npm run sfcc:guestUser:test
+        env:
+          TEST_APP: sfcc
+          TEST_ENV: uat
+          PASSWORD: Apva@2025
         continue-on-error: true
 
       - name: Generate Allure report
