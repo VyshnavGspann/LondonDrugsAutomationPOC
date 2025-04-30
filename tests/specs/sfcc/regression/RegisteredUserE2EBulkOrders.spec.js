@@ -1,17 +1,17 @@
 const { test, expect } = require('@playwright/test');
-// const { E2Eorder } = require('../../../../pageObjects/E2EOrder');
 const { CartPage } = require('../../../pageObjects/CartPage');
 const { HomePage } = require('../../../pageObjects/HomePage');
 const { CheckoutPage } = require('../../../pageObjects/CheckoutPage');
 const { SignInPage } = require('../../../pageObjects/SigninPage');
 const { OrderConfirmationPage } = require('../../../pageObjects/OrderConfirmationPage');
+const { productData } = require('../../../testData/sfcc/uatTestData');
 
 const application = process.env.TEST_APP; // "OMS" or "SFCC"
 const environment = process.env.TEST_ENV; // "qa" or "staging" or "uat"
 // The commented line will be uncommented while pushing the code to Github
 const testData = require(`../../../testData/sfcc/${environment}TestData.js`);
 
-test('E2E Test Ordercreation for Ship To Store', async ({ browser }) => {
+test('E2E Test Bulk Ordercreation for Door Dash.', async ({ browser }) => {
   const context = await browser.newContext();
 
   const rawCookieString = testData.dataDomekey
@@ -40,22 +40,21 @@ test('E2E Test Ordercreation for Ship To Store', async ({ browser }) => {
   const orderConfirmationPage = new OrderConfirmationPage(page);
 
   await homePage.goTo();
-  await homePage.searchForProduct('L8211682');
-  await productPage.saveProductNameAndGoToProductPage();
-  await productPage.VerifyProductDetails();
-  await productPage.validateProductTitle();
-  await productPage.saveProductPrice();
-  await productPage.selectInStorePickUpRadioButton();
-  await productPage.enterPostalCodeForShipToStore();
-  await productPage.clickOnSearchPostalButton();
-  await productPage.clickOnSetStoreButton();
-  await productPage.addProductToCart();
-  await productPage.validateMiniCartIsDisplayed();
-  await productPage.validateProductPriceInCart();
-  await productPage.proceedToCheckout();
-  await checkoutPage.enterEmail();
+  await homePage.navigateToLoginPage();
+  await signInPage.performLogin(testData.userEmail, testData.password);
+  await homePage.searchAndAddProductsToCart(['L1607469', 'L6018402', 'L8211682']);
+
+  await productPage.clickOnCartButton();
+  await productPage.clickCheckoutButtonForDoorDash();
+  await productPage.clickAddAddressLink();
+  await productPage.enterDoorDashDayDeliveryAddress(testData.doorDash);
+  await productPage.clickCheckAddressButton();
+  await productPage.selectDoordashDeliveryForAllProducts();
+  await productPage.clickCheckoutButtonForDoorDash();
+
+  // await checkoutPage.addShippingAddressForExistingUser(testData.doorDashShipping)
+  await checkoutPage.addShippingAddress(testData.doorDashShipping)
   await checkoutPage.proceedToBilling();
-  await checkoutPage.addShippingAddressforInStorePickup(testData.shippingInStore);
   await checkoutPage.selectCardType();
   await checkoutPage.cardPayment(testData.payment.CreditCard.master);
   await checkoutPage.placeyourOrder();

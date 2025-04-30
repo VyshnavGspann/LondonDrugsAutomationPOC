@@ -1,0 +1,16 @@
+
+async function clickWithRetry(locator, page, retries=2) {
+    for(let i=0; i<retries; i++){
+        try{
+            await locator.click();
+            await page.waitForTimeout(10000);
+            return;
+        } catch(err){
+            console.warn(`click attempt ${i + 1} failed`);
+            if(i===retries)
+                throw err;
+        }
+    }
+ }
+
+ module.exports = { clickWithRetry };

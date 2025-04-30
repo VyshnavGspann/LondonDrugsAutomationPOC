@@ -6,9 +6,8 @@
   "scripts": {
     "sfcc:createAccount:test": "cross-env PASSWORD=Apva@2025 TEST_APP=sfcc TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/CreateAccount_E2EOrderShipToHome.spec.js --workers=1 --config=Configurations/playwright.config.js --headed",
     "sfcc:reisteedUser:test": "cross-env PASSWORD=Apva@2025 TEST_APP=sfcc TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/RegisteredUser_E2EOrderShipToHome.spec.js --workers=1 --config=Configurations/playwright.config.js --headed",
-    "sfcc:guestUser:test": "cross-env PASSWORD=Apva@2025 TEST_APP=sfcc TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/GuestUser_E2EOrderShipToHome.spec.js --workers=1 --config=Configurations/playwright.config.js --headed",
+    "sfcc:guestUser:test": "cross-env PASSWORD=Test@123 TEST_APP=sfcc TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/RegisteredUserE2EBulkOrders.spec.js --workers=1 --config=Configurations/playwright.config.js --headed",
     "api:test": "cross-env TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/API.spec.js --workers=1 --config=Configurations/playwright.config.js --headed"
-
   },
   "keywords": [],
   "author": "LondonDrugs Automation",

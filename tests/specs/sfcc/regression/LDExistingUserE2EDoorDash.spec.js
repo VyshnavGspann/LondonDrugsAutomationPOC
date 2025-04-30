@@ -38,22 +38,24 @@ test('E2E Test Ordercreation for Door Dash.',  async ({ browser }) => {
     await homePage.goTo();
     await homePage.navigateToLoginPage();
     await signInPage.performLogin(testData.userEmail, testData.password);
-    await homePage.searchForProduct1('L3166675');
+    await homePage.searchForProduct1('L8211682');
   //  await homePage.searchForProduct('L3166675');
     const productPage = new CartPage(page);
     await productPage.saveProductNameAndGoToProductPage();
+    await productPage.VerifyProductDetails();
     await productPage.validateProductTitle();
     await productPage.saveProductPrice();
     await productPage.addProductToCart();
+    await productPage.validateMiniCartIsDisplayed();
     await productPage.validateProductPriceInCart();
     await productPage.viewAndCheckoutButtonForDoorDash();
     await productPage.clickOnEditLink();
-    await productPage.proceedToCheckoutDoorDash();
+    await productPage.clickCheckoutButtonForDoorDash();
     const checkoutPage = new CheckoutPage(page);
     await checkoutPage.addShippingAddressForExistingUser(testData.doorDashShipping)
     await checkoutPage.proceedToBilling();
-  //  await checkoutPage.selectCardType();
-    await checkoutPage.cardPayment(testData.payment.CreditCard.visa);
+    await checkoutPage.selectCardType();
+    await checkoutPage.cardPayment(testData.payment.CreditCard.master);
     await checkoutPage.placeyourOrder();
     const orderConfirmationPage = new OrderConfirmationPage(page);
     await orderConfirmationPage.verifythanksMessageAppears();   
