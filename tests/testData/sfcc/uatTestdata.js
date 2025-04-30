@@ -5,6 +5,7 @@ module.exports = {
     baseUrl: 'https://london-drugs-uat-origin.kibology.us/',
 
     dataDomekey: 'datadome=~S5KVjx7nBREDVUfGSU_Rcui_RLNXFTMbg5e7lp~u6y_U55feIrdNN85WgDw5XidWBN2a1i99UWAbdQJDWW2bji190KCXDWBNk6A2EqJHArFe6yEF7XvdZcZPw6GG5zj',
+
     domain: "london-drugs-uat-origin.kibology.us",
 
     userEmail: "herryom25@yopmail.com",

@@ -9,10 +9,11 @@ const {OrderConfirmationPage} = require('../../../pageObjects/OrderConfirmationP
 const application = process.env.TEST_APP; // "OMS" or "SFCC"
 const environment = process.env.TEST_ENV; // "qa" or "staging" or "uat"
 // The commented line will be uncommented while pushing the code to Github
-const testData = require(`../../../testData/sfcc/${environment}TestData.js`);
+const testData = require(`../../../testData/sfcc/${environment}Testdata.js`);
+// const testData = require(`../../../testData/sfcc/uatTestData.js`);
 
-test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
-    const context = await browser.newContext();
+test('E2E Test Ordercreation for Ship to home.',  async ({ page }) => {
+    const context = await page.context();
     
     const rawCookieString = testData.dataDomekey
     const domain = testData.domain;
@@ -32,10 +33,9 @@ test('E2E Test Ordercreation for Ship to home.',  async ({ browser }) => {
     console.log('Parsed cookies:', cookies);
     await context.addCookies(cookies);
 
-    const page = await context.newPage();
     const homePage = new HomePage(page);
     const signInPage = new SignInPage(page);
-    await homePage.goTo();
+    await homePage.goTo(testData.baseUrl);
     await homePage.searchForProduct('L3166675');
     const productPage = new CartPage(page);
     await productPage.saveProductNameAndGoToProductPage();
