@@ -3,11 +3,12 @@
 
 module.exports = {
     baseUrl: 'https://london-drugs-uat-origin.kibology.us/',
-  
-    dataDomekey: 'datadome=KxgiKtgRRZ4PczhEMHaql_8kjcSjwp6ec6IHOZRvj9PlAJDlOx0sqFiXqoRRVvFjSDLw04bTSX5UPKY~5rBGReWxlHfRtvk0naWorBTsWYI4MQNpc29v5Qqq4DhAcvZU',
+
+    dataDomekey: 'datadome=~S5KVjx7nBREDVUfGSU_Rcui_RLNXFTMbg5e7lp~u6y_U55feIrdNN85WgDw5XidWBN2a1i99UWAbdQJDWW2bji190KCXDWBNk6A2EqJHArFe6yEF7XvdZcZPw6GG5zj',
+
     domain: "london-drugs-uat-origin.kibology.us",
 
-    userEmail: "testimmediatelondon1@yopmail.com",
+    userEmail: "herryom25@yopmail.com",
     password: process.env.PASSWORD,
 
     // API
@@ -32,7 +33,7 @@ module.exports = {
             },
             master: {
                 nameOnCard: 'Test Accept',
-                cardNumber: '5431111111111111',
+                cardNumber: '5431 1111 1111 1111',
                 cvv: '123',
             },
 
@@ -65,20 +66,20 @@ module.exports = {
     },
 
     doorDash: {
-        address1: '500 - 8888 Country Hills Blvd NW',
-        city: 'Calgary',
-        postalCode: "T3G 5T4",
+        address1: "1-1225 St Mary's Rd",
+        city: 'Winnipeg',
+        postalCode: "R2M 5E5",
     },
 
     doorDashShipping: {
         email: 'tes1t@example.com',
         firstName: 'Keil',
         lastName: 'Accept',
-        address1: '500 - 8888 Country Hills Blvd NW',
+        address1: "1-1225 St Mary's Rd",
         address2: 'Apt 101',
-        city: 'Calgary',
-        zipcode: 'T3G 5T4',
-        phone: '+13434129791',
+        city: 'Winnipeg',
+        zipcode: 'R2M 5E5',
+        phone: '+(703) 701-9964',
     },
 
     productData: {
@@ -86,9 +87,9 @@ module.exports = {
 
         MIXED_PRODUCT: ["444432", "540625", "448849", "527210",],
 
-        VARIANT_PRODUCT: ["108012" ],
-        
-        STH_Only: ["109034","95135",],
+        VARIANT_PRODUCT: ["108012"],
+
+        STH_Only: ["109034", "95135",],
 
         STH_DROP_SHIP: ["104013",],
 
@@ -157,7 +158,7 @@ module.exports = {
             saleItem: "57009798",
             saleAndNosaleVariant: "78631",
             errorquantityProduct: "607833"
-            
+
         },
         bundled: {
             bundleProduct: "SKU973", //Bundle product
@@ -382,7 +383,7 @@ module.exports = {
 
     breadBoardLinkText: {
         rewardsLandingPage: "Rewards Landing Page",
-        savedPaymentMethods:"Saved Payment Methods"
+        savedPaymentMethods: "Saved Payment Methods"
     },
 
     giftMessage: {
@@ -405,8 +406,8 @@ module.exports = {
             }
         }
     },
-    expTextsAddNewCard:{
-        expTexts : [
+    expTextsAddNewCard: {
+        expTexts: [
             '* Name on Card',
             '* Card Number',
             '* Security Code',

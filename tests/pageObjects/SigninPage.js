@@ -125,6 +125,7 @@ class SignInPage {
     }
 
     async clickSignInButton() {
+        await this.page.waitForLoadState('load');
         await this.signInButton.click();
     }
     async fillEmail(email) {
