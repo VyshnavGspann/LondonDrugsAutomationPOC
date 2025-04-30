@@ -18,11 +18,11 @@ class HomePage {
     async goTo() {
         await this.page.goto(uatTestData.baseUrl);
     }
-        
-    async goTo(url) {
-        // await this.page.goto('https://london-drugs-uat-origin.kibology.us/products/maybelline-volumexpress-the-colossal-mascara/p/M0000453?Variant%20Color=GLAM_BLACK/');  // Correct URL
-        await this.page.goto(url);  // Correct URL
-    }
+
+    // async goTo(url) {
+    //     // await this.page.goto('https://london-drugs-uat-origin.kibology.us/products/maybelline-volumexpress-the-colossal-mascara/p/M0000453?Variant%20Color=GLAM_BLACK/');  // Correct URL
+    //     await this.page.goto(url);  // Correct URL
+    // }
 
     async searchForProduct(productName) {
         await this.searchBox.fill(productName);
