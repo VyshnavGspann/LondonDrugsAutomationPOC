@@ -3,6 +3,7 @@ const { defineConfig, devices } = require('@playwright/test');
 const { on } = require('events');
 import { testPlanFilter } from "allure-playwright/dist/testplan";
 import * as os from "os";
+import path from 'path';
 
 const currenWorkingDirectory = process.cwd();
 
@@ -12,8 +13,8 @@ const getDeviceConfig = () => {
   const deviceConfig = devices[deviceName];
 
   if (!deviceConfig) {
-      console.warn(`Device '${deviceName}' not found. Using 'Desktop Chrome' as fallback.`);
-      return devices['Desktop Chrome'];
+    console.warn(`Device '${deviceName}' not found. Using 'Desktop Chrome' as fallback.`);
+    return devices['Desktop Chrome'];
   }
 
   return deviceConfig;
@@ -30,7 +31,7 @@ const getDeviceConfig = () => {
  */
 module.exports = defineConfig({
   testDir: currenWorkingDirectory + '/tests',
-  timeout : 1*7*60*1000,
+  timeout: 1 * 7 * 60 * 1000,
   // timeout : 60000,
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -38,16 +39,17 @@ module.exports = defineConfig({
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 1 : 0,
+  //retries: 1,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 5 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ["line"], 
+    ["line"],
     // ["./Reporters/TestRailReporter.ts"],
     ["allure-playwright",
       {
         detail: true,
-        outputFolder: currenWorkingDirectory+"/allure-results",
+        outputFolder: path.join(currenWorkingDirectory + "/allure-results"),
         environmentInfo: {
           os_platform: os.platform(),
           os_release: os.release(),
@@ -56,9 +58,11 @@ module.exports = defineConfig({
         },
       },
     ],
-    ['junit', { embedAnnotationsAsProperties: true, outputFile: currenWorkingDirectory+'/test-results/e2e-junit-results.xml' }],
+
+    ['junit', { embedAnnotationsAsProperties: true, outputFile: currenWorkingDirectory + '/test-results/e2e-junit-results.xml' }],
   ],
-  
+  // outputDir: 'test-results/',
+
   grep: testPlanFilter(),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -70,14 +74,17 @@ module.exports = defineConfig({
     actionTimeout: 30000,
     // Default test timeout (not just action/assert)
     timeout: 30000, // 30 seconds per test
-    trace: 'on',
-    screenshot : { mode: 'on', fullPage: true},
-    video : 'on-first-retry',
+    // trace: 'retain-on-failure',
+    screenshot: { mode: 'on', fullPage: true },
+    video: 'retain-on-failure',
+    launchOptions: {
+      slowMo: 50
+    },
     //baseURL : "https://development-instance.worldmarket.com/",
-    headless : false,
+    headless: false,
     ignoreHTTPSErrors: true,
-     browserName : "chromium",
-     navigationTimeout: 60000,
+    browserName: "chromium",
+    navigationTimeout: 60000,
     // channel: 'chrome',
     ...getDeviceConfig(),
     // permissions: ["clipboard-read"],
@@ -87,7 +94,7 @@ module.exports = defineConfig({
       '--disable-setuid-sandbox', // Disables the setuid sandbox (Linux only).
       '--ignore-certificate-errors', // Ignores certificate errors, allowing testing on sites with invalid certs.
       '--ignore-ssl-errors', // Similar to ignore certificate errors but for SSL protocol errors.
-  ],
+    ],
   },
 
   /* Configure projects for major browsers */

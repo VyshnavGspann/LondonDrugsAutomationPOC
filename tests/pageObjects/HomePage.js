@@ -1,5 +1,6 @@
 // pageObjects/HomePage.js
 const { expect } = require('@playwright/test');
+const uatTestData = require('../testData/sfcc/uatTestdata');
 
 class HomePage {
     constructor(page) {

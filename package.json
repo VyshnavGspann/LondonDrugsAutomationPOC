@@ -4,24 +4,28 @@
   "description": "LondonDrugs Ecom and OMS automation with Playwright",
   "main": "index.js",
   "scripts": {
-    "postTest": "(npx allure generate allure-results --clean -o allure-report) && (npx allure open allure-report)",
+    "clean": "rimraf test-results allure-results allure-report test-artifacts",
+    "postTest": "(npx allure generate allure-results -o allure-report) && (npx allure open allure-report)",
     "sfcc:createAccount:test": "cross-env PASSWORD=Apva@2025 TEST_APP=sfcc TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/CreateAccount_E2EOrderShipToHome.spec.js --workers=1 --config=Configurations/playwright.config.js --headed",
     "sfcc:reisteedUser:test": "cross-env PASSWORD=Apva@2025 TEST_APP=sfcc TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/RegisteredUser_E2EOrderShipToHome.spec.js --workers=1 --config=Configurations/playwright.config.js --headed",
-    "sfcc:guestUser:test": "cross-env PASSWORD=Test@123 TEST_APP=sfcc TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/RegisteredUserE2EBulkOrders.spec.js --workers=1 --config=Configurations/playwright.config.js --headed",
-    "api:test": "cross-env TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/API.spec.js --workers=1 --config=Configurations/playwright.config.js --headed"
+    "sfcc:guestUser:test": "cross-env PASSWORD=Test@123 TEST_APP=sfcc TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/LDExistingFreshUserE2EDoorDash.spec.js --workers=1 --config=Configurations/playwright.config.js --headed",
+    "api:test": "cross-env TEST_ENV=uat npx playwright test tests/specs/sfcc/regression/API.spec.js --workers=1 --config=Configurations/playwright.config.js --headed",
+    "sfcc:guestUserWithReport": "npm run clean && npm run sfcc:guestUser:test && npm run postTest"
   },
   "keywords": [],
   "author": "LondonDrugs Automation",
   "license": "ISC",
   "devDependencies": {
     "@dlenroc/testrail": "^1.9.1",
+    "@playwright/test": "^1.52.0",
     "@types/node": "^20.12.2",
-    "allure-playwright": "^2.15.0",
+    "allure-playwright": "^2.15.1",
     "cross-env": "^7.0.3",
-    "playwright": "^1.45.0"
+    "npm-run-all": "^4.1.5",
+    "playwright": "^1.45.0",
+    "rimraf": "^6.0.1"
   },
   "dependencies": {
-    "@playwright/test": "^1.45.0",
     "allure-commandline": "^2.27.0",
     "axios": "^1.7.7",
     "mssql": "^11.0.1",
