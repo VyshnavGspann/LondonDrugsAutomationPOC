@@ -4,11 +4,11 @@
 module.exports = {
     baseUrl: 'https://london-drugs-uat-origin.kibology.us/',
 
-    dataDomekey: 'datadome=~S5KVjx7nBREDVUfGSU_Rcui_RLNXFTMbg5e7lp~u6y_U55feIrdNN85WgDw5XidWBN2a1i99UWAbdQJDWW2bji190KCXDWBNk6A2EqJHArFe6yEF7XvdZcZPw6GG5zj',
+    dataDomekey: 'datadome=_uEuG5YzluByn4gUjH0ac2Scp3Ud3oUKxEDazFXpa7kwtghVCYzvhxjrz~7Lq5JzuNDw2TwraCp7KHWv1QYMeaQYnSPxKkOsciiJm1CHiAj6gbyRKpKiUhK4neJTBhhk',
 
     domain: "london-drugs-uat-origin.kibology.us",
 
-    userEmail: "herryom25@yopmail.com",
+    userEmail: "Robert@yopmail.com",
     password: process.env.PASSWORD,
 
     // API
@@ -79,7 +79,7 @@ module.exports = {
         address2: 'Apt 101',
         city: 'Winnipeg',
         zipcode: 'R2M 5E5',
-        phone: '+(703) 701-9964',
+        phone: '(703) 701-9964',
     },
 
     productData: {

@@ -4,7 +4,6 @@ const { HomePage } = require('../../../pageObjects/HomePage');
 const { CheckoutPage } = require('../../../pageObjects/CheckoutPage');
 const { SignInPage } = require('../../../pageObjects/SigninPage');
 const { OrderConfirmationPage } = require('../../../pageObjects/OrderConfirmationPage');
-const { productData } = require('../../../testData/sfcc/uatTestData');
 
 const application = process.env.TEST_APP; // "OMS" or "SFCC"
 const environment = process.env.TEST_ENV; // "qa" or "staging" or "uat"
@@ -52,12 +51,12 @@ test('E2E Test Bulk Ordercreation for Door Dash.', async ({ browser }) => {
   await productPage.selectDoordashDeliveryForAllProducts();
   await productPage.clickCheckoutButtonForDoorDash();
 
-  // await checkoutPage.addShippingAddressForExistingUser(testData.doorDashShipping)
-  await checkoutPage.addShippingAddress(testData.doorDashShipping)
-  await checkoutPage.proceedToBilling();
-  await checkoutPage.selectCardType();
+  await checkoutPage.addShippingAddressForExistingUser(testData.doorDashShipping)
+  // await checkoutPage.addShippingAddress(testData.doorDashShipping)
+  await checkoutPage.proceedToBillingForBulkOrders();
+  await checkoutPage.selectCardTypeForBulkOrders();
   await checkoutPage.cardPayment(testData.payment.CreditCard.master);
-  await checkoutPage.placeyourOrder();
+  await checkoutPage.placeyourOrderForBulkOrder();
   await orderConfirmationPage.verifythanksMessageAppears();
   await orderConfirmationPage.getOrderNumber();
 });

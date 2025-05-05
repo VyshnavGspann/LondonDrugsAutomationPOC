@@ -164,12 +164,8 @@ class CartPage {
         await this.page.waitForTimeout(20000);
     }
 
-    async clickCheckoutButtonForDoorDash(locator, retries = 2) {
-        // await this.page.waitForLoadState('domcontentloaded');
-        // await this.page.waitForLoadState('networkidle');
-        // await this.page.waitForTimeout(10000); 
-        //   await this.page.waitForSelector("//button[text()='Checkout']"); // Wait for the checkout button
-        // await expect(this.checkoutButton).toBeEnabled();
+    async clickCheckoutButtonForDoorDash(retries = 2) {
+
         await this.clickWithRetry(this.checkoutButton, this.page, 2);
         console.log("Product checkout successfully");
         await this.page.waitForTimeout(10000);
